@@ -13,6 +13,7 @@ const ProductList = (props) => {
           price={product.price}
           availability={product.availability}
           quantity={product.quantity}
+          image={product.image}
           retailer={product.retailer}
         />
       );
@@ -31,6 +32,7 @@ ProductList.propTypes = {
       price: PropTypes.number.isRequired,
       availability: PropTypes.bool.isRequired,
       quantity: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
       retailer: PropTypes.string.isRequired,
     })
   ),

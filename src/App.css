@@ -2,22 +2,57 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+  font-family: "Work Sans";
 }
 
-
-.App-header {
+.App-name {
   background-color: white;
-  min-height: 10vh;
-  display: flex;
-  flex-direction: column;
+  min-height: 5vh;
   text-align: left;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(18px + 2vmin);
   color: black;
   font-family: "Work Sans";
   font-weight: bold;
+  margin-left: 5px;
+  padding: 5px;
+  left: 2%;
+  text-indent: 5px;
 }
 
+.Search-bar {
+  background-color: black;
+  min-height: 25vh;
+  color: white;
+}
 
+.App-content {
+  padding: 5px 5px 5px 5px;
+}
 
+.Navigation-bar {
+  /* margin: 0;
+  padding: 0; */
+  background-color: white;
+  float: right;
+  color: black;
+  /* text-align: center; */
+  padding: 7px 25px;
+  margin-top: -4%;
+  /* margin: 20px; */
+  /* text-decoration: none; */
+  /* display: flex; */
+  flex-direction: row;
+  /* position: absolute;
+  top: 8px;
+  right: 100px; */
+}
 
-
+/* .App-header { */
+  /* margin: 0;
+  padding: 0; */
+  /* display: block; */
+  /* display: flex; */
+  /* display: inline; */
+  /* flex-direction: row; */
+/* } */
+/* Change the link color to #111 (black) on hover */

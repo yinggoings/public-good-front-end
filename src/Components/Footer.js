@@ -15,10 +15,10 @@ const Footer = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <img src={GitHubLogo} alt="github logo" />
+        <img className = "footerImage" src={GitHubLogo} alt="github logo" />
       </a>
       <a href="mailto:public.good.app@gmail.com">
-        <img src={EmailLogo} alt="email logo" />
+        <img className = "footerImage" src={EmailLogo} alt="email logo" />
       </a>
       {/* <img src={InstagramLogo} alt="instagram logo" />
       <img src={RedditLogo} alt="reddit logo" />
