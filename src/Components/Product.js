@@ -12,17 +12,23 @@ const Product = (props) => {
             {/* <button className="select-product-button" onClick={}> */}
             {/* button description here */}
             {/* </button> */}
-            <p id="product-brand">{props.brand}</p>
-            <p className = "product-image">
-              <ProductImage
-                image={props.image}
-              />
+            <p
+              id="product-brand product-brand-container"
+              style={{ fontWeight: "bold" }}
+            >
+              {props.brand}
             </p>
-            
-            <p id="product-name">{props.name}</p>
-            <p id="product-price">{`$${props.price}`}</p>
-            <p id="product-quantity">
-              {`${props.quantity} units available at ${props.retailer}`}
+            <p className="product-image image-container">
+              <ProductImage image={props.image} />
+            </p>
+
+            <p id="product-name product-name-container">{props.name}</p>
+            <p id="product-price product-price-container">{`$${props.price}`}</p>
+            <p id="product-quantity product-quantity-container">
+              {props.quantity === null
+                ? "Sold out"
+                : `${props.quantity} units available at ${props.retailer}`}
+              {/* {`${props.quantity} units available at ${props.retailer}`} */}
             </p>
             {/* <p id='retailer'>{`Available at ${props.retailer}`}</p> */}
           </section>

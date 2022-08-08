@@ -26,13 +26,36 @@ img:not(.footerImage) {
     width: 150px;
 }
 
-#product-brand {
-    font-weight: bold;
-    text-decoration: underline;
-    text-align: left;
-    text-indent: 63px;
+.product-brand {
+    /* font-weight: bold;
+    text-decoration: underline; */
+    /* text-align: center;
+    text-indent: 63px; */
 }
 
 #product-name {
     font-size: calc(4px + 2vmin);
+}
+
+.product {
+    display: grid;
+}
+
+.product-container, .image-container {
+    display: grid;
+    justify-items: center;
+}
+
+#product-name-container, #product-price-container, #product-quanitity-container{
+    display: grid; 
+}
+
+#product-brand-container { 
+    display: grid; 
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: underline;
 }
