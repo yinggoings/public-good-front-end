@@ -4,6 +4,9 @@ import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import DonateNow from "./components/DonateNow";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FaBars, FaCoffee, FiMenu, BiMenu } from "react-icons/fa";
+import { FiMenu } from "react-icons/fi";
 
 const App = () => {
   const [products, setProducts] = useState([
@@ -14,7 +17,8 @@ const App = () => {
       price: 29.99,
       availability: true,
       quantity: 7,
-      image: "https://target.scene7.com/is/image/Target/GUEST_1d31ad6f-ff97-4559-ad24-1bcc0e6de308",
+      image:
+        "https://target.scene7.com/is/image/Target/GUEST_1d31ad6f-ff97-4559-ad24-1bcc0e6de308",
       retailer: "Target",
     },
     {
@@ -24,7 +28,8 @@ const App = () => {
       price: 9.19,
       availability: true,
       quantity: 11,
-      image: "https://target.scene7.com/is/image/Target/GUEST_4e6608e1-dfa0-4950-8b5b-ecd2c675afa9",
+      image:
+        "https://target.scene7.com/is/image/Target/GUEST_4e6608e1-dfa0-4950-8b5b-ecd2c675afa9",
       retailer: "Target",
     },
     {
@@ -34,7 +39,8 @@ const App = () => {
       price: 17.46,
       availability: true,
       quantity: 17,
-      image: "https://i5.walmartimages.com/asr/fc4ec500-6fb4-481d-a4a6-6089e5a9952f.08b60e6fd1aeb3b47d41d129068c6b1e.png",
+      image:
+        "https://i5.walmartimages.com/asr/fc4ec500-6fb4-481d-a4a6-6089e5a9952f.08b60e6fd1aeb3b47d41d129068c6b1e.png",
       retailer: "Walmart",
     },
     {
@@ -44,7 +50,8 @@ const App = () => {
       price: 36.48,
       availability: false,
       quantity: null,
-      image: "https://i5.walmartimages.com/asr/03468e8d-c033-4a86-b603-783f31b60d7b.dabe94896761f9ee5d2a0720161a0b94.jpeg",
+      image:
+        "https://i5.walmartimages.com/asr/03468e8d-c033-4a86-b603-783f31b60d7b.dabe94896761f9ee5d2a0720161a0b94.jpeg",
       retailer: "Walmart",
     },
     {
@@ -54,7 +61,8 @@ const App = () => {
       price: 17.46,
       availability: true,
       quantity: 17,
-      image: "https://i5.walmartimages.com/asr/fc4ec500-6fb4-481d-a4a6-6089e5a9952f.08b60e6fd1aeb3b47d41d129068c6b1e.png",
+      image:
+        "https://i5.walmartimages.com/asr/fc4ec500-6fb4-481d-a4a6-6089e5a9952f.08b60e6fd1aeb3b47d41d129068c6b1e.png",
       retailer: "Walmart",
     },
     {
@@ -64,7 +72,8 @@ const App = () => {
       price: 36.48,
       availability: false,
       quantity: null,
-      image: "https://i5.walmartimages.com/asr/03468e8d-c033-4a86-b603-783f31b60d7b.dabe94896761f9ee5d2a0720161a0b94.jpeg",
+      image:
+        "https://i5.walmartimages.com/asr/03468e8d-c033-4a86-b603-783f31b60d7b.dabe94896761f9ee5d2a0720161a0b94.jpeg",
       retailer: "Walmart",
     },
     {
@@ -74,7 +83,8 @@ const App = () => {
       price: 29.99,
       availability: true,
       quantity: 7,
-      image: "https://target.scene7.com/is/image/Target/GUEST_1d31ad6f-ff97-4559-ad24-1bcc0e6de308",
+      image:
+        "https://target.scene7.com/is/image/Target/GUEST_1d31ad6f-ff97-4559-ad24-1bcc0e6de308",
       retailer: "Target",
     },
     {
@@ -84,18 +94,29 @@ const App = () => {
       price: 9.19,
       availability: true,
       quantity: 11,
-      image: "https://target.scene7.com/is/image/Target/GUEST_4e6608e1-dfa0-4950-8b5b-ecd2c675afa9",
+      image:
+        "https://target.scene7.com/is/image/Target/GUEST_4e6608e1-dfa0-4950-8b5b-ecd2c675afa9",
       retailer: "Target",
-    }
+    },
   ]);
 
   return (
     <div className="App">
+      {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
+      {/* <FontAwesomeIcon icon={FaBars} /> */}
+      {/* <FontAwesomeIcon icon={FaCoffee} /> */}
+      <FontAwesomeIcon icon="fa-solid fa-bars" />
+      {/* <i class="fa-solid fa-bars"></i> */}
+      <FiMenu />
       <header className="App-header">
         <h1 className="App-name">PUBLIC GOOD.</h1>
+        <h2 className="nav-link">REGISTER.</h2>
+        <h2 className="nav-link">LOG IN.</h2>
+        <h2 className="nav-link">CONTACT US.</h2>
+        {/* <h1 className="App-name">PUBLIC GOOD.</h1>
         <h2 className="Navigation-bar">REGISTER.</h2>
         <h2 className="Navigation-bar">LOG IN.</h2>
-        <h2 className="Navigation-bar">CONTACT US.</h2>
+        <h2 className="Navigation-bar">CONTACT US.</h2> */}
       </header>
       <nav className="Search-bar"></nav>
       <main className="App-content">

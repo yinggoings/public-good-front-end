@@ -13,8 +13,10 @@
   color: black;
   font-family: "Work Sans";
   font-weight: bold;
-  margin-left: 5px;
-  padding: 5px;
+  /* margin-left: 1rem; */
+  /* padding: 5px; */
+  margin: 1rem;
+  padding: 1rem;
   left: 2%;
   text-indent: 5px;
 }
@@ -32,21 +34,36 @@
 .Navigation-bar {
   /* margin: 0;
   padding: 0; */
-  background-color: white;
-  float: right;
-  color: black;
+  /* display: flex; */
+  /* background-color: white; */
+  /* float: right; */
+  /* color: black; */
   /* text-align: center; */
-  padding: 7px 25px;
-  margin-top: -4%;
+  /* padding: 7px 25px; */
+  /* margin: 1rem;
+  padding: 1rem; */
+  /* padding: 5px;
+  margin-top: -4%; */
   /* margin: 20px; */
   /* text-decoration: none; */
   /* display: flex; */
-  flex-direction: row;
+  /* flex-direction: row; */
   /* position: absolute;
   top: 8px;
   right: 100px; */
 }
 
+.App-header {
+  /* margin: 0; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  margin: 0.5rem;
+}
 /* .App-header { */
   /* margin: 0;
   padding: 0; */
@@ -56,3 +73,7 @@
   /* flex-direction: row; */
 /* } */
 /* Change the link color to #111 (black) on hover */
+
+i {
+  font-size: 50px;
+}

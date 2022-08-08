@@ -14,7 +14,7 @@ const AddressSearch = (props) => {
     const stateName = event.target.name;
     const inputValue = event.target.value;
 
-    const newAddressSearch = { ...AddressSearch };
+    const newAddressSearch = { ...makeAddress };
     newAddressSearch[stateName] = inputValue;
 
     setAddress(newAddressSearch);
