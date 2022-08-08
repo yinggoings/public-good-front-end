@@ -6,6 +6,8 @@
 }
 
 .App-name {
+  display: flex;
+  justify-content: flex-start;
   background-color: white;
   min-height: 5vh;
   text-align: left;
@@ -56,13 +58,29 @@
 .App-header {
   /* margin: 0; */
   display: flex;
-  justify-content: space-between;
+
+
+  /* justify-content: space-between; */
   align-items: center;
   flex-wrap: wrap;
 }
 
 .nav-link {
   margin: 0.5rem;
+}
+
+.links {
+  display: flex;
+  position:fixed;
+  right: 20px;
+  height: 5vh; 
+  width: 20vw; 
+  font-size: calc(1px + 1vmin);
+  margin: 0;
+  /* justify-content: end; */
+  /* float: right;  */
+  /* position: absolute; 
+  right: 0;  */
 }
 /* .App-header { */
   /* margin: 0;
@@ -73,7 +91,3 @@
   /* flex-direction: row; */
 /* } */
 /* Change the link color to #111 (black) on hover */
-
-i {
-  font-size: 50px;
-}

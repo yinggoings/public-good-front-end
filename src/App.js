@@ -105,14 +105,18 @@ const App = () => {
       {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
       {/* <FontAwesomeIcon icon={FaBars} /> */}
       {/* <FontAwesomeIcon icon={FaCoffee} /> */}
-      <FontAwesomeIcon icon="fa-solid fa-bars" />
+      {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
       {/* <i class="fa-solid fa-bars"></i> */}
-      <FiMenu />
+      {/* <FiMenu /> */}
       <header className="App-header">
         <h1 className="App-name">PUBLIC GOOD.</h1>
-        <h2 className="nav-link">REGISTER.</h2>
-        <h2 className="nav-link">LOG IN.</h2>
-        <h2 className="nav-link">CONTACT US.</h2>
+
+        <ul className="links">
+          <li className="nav-link">REGISTER.</li>
+          <li className="nav-link">LOG IN.</li>
+          <li className="nav-link">CONTACT US.</li>
+        </ul>
+
         {/* <h1 className="App-name">PUBLIC GOOD.</h1>
         <h2 className="Navigation-bar">REGISTER.</h2>
         <h2 className="Navigation-bar">LOG IN.</h2>
