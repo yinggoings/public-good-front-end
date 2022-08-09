@@ -24,6 +24,7 @@ img:not(.footerImage) {
     border-radius: 4px;
     padding: 5px;
     width: 150px;
+    background-color: white;
 }
 
 .product-brand {
@@ -62,7 +63,7 @@ img:not(.footerImage) {
 
 ul li .image-container:hover,ul li .image-container:focus{
     box-shadow:10px 10px 7px rgba(0,0,0,.7);
-    transform: scale(1.975);
+    transform: scale(1.99);
     position:relative;
     z-index:5;
     background-color: white;
@@ -70,4 +71,8 @@ ul li .image-container:hover,ul li .image-container:focus{
 
 ul li{
     margin:1em;
+}
+
+ul li img:not(.footerImage):hover,ul li img:not(.footerImage):focus{
+    border: none;
 }

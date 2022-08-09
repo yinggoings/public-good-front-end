@@ -20,6 +20,23 @@ const ProductList = (props) => {
     });
   };
 
+  // const ProductSearch = ({products}) => {
+  //   const [query, setQuery] = useState("");
+  //   return (
+  //     <div>
+  //       <input placeholder="Enter Post Title" onChange={event => setQuery(event.target.value)} />
+  //     {
+  //       Product.map((post, index) => {
+  //         <div key={index}>
+  //           <p>{post.title}</p>
+  //           <p>{post.author}</p>
+  //         </div>
+  //       })
+  //     }
+  //     </div>
+  //   )
+  // };
+
   return <ul className="product-list no-bullet">{getProductList(props)}</ul>;
 };
 

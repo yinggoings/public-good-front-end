@@ -1,44 +1,62 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useState } from "react";
-import "./ProductSearch.ss";
+// import React from "react";
+// import PropTypes from "prop-types";
+// import { useState } from "react";
+// import "./ProductSearch.css";
+// import Product from "./Product";
 
-const defaultProductSearch = {
-  brand: "",
-};
 
-const AddressSearch = (props) => {
-  const [makeProduct, setProduct] = useState(defaultProductSearch);
+//   brand: "",
+// };
 
-  const onProductSearchChange = (event) => {
-    const stateName = event.target.name;
-    const inputValue = event.target.value;
+// const AddressSearch = (props) => {
+//   const [makeProduct, setProduct] = useState(defaultProductSearch);
 
-    const newProductSearch = { ...makeProduct };
-    newProductSearch[stateName] = inputValue;
+//   const onProductSearchChange = (event) => {
+//     const stateName = event.target.name;
+//     const inputValue = event.target.value;
 
-    setProduct(newProductSearch);
-  };
+//     const newProductSearch = { ...makeProduct };
+//     newProductSearch[stateName] = inputValue;
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // TODO: add some sort of callback here
-    // props.somesomertofcallback(address);
-    setProduct(defaultProductSearch);
-  };
+//     setProduct(newProductSearch);
+//   };
 
-  return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="address"
-          value={makeProduct.brand}
-          onChange={onProductSearchChange}
-        />
-      </form>
-    </section>
-  );
-};
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     // TODO: add some sort of callback here
+//     // props.somesomertofcallback(address);
+//     setProduct(defaultProductSearch);
+//   };
 
-export default AddressSearch;
+// const ProductSearch = ({products}) => {
+//   const [query, setQuery] = useState("");
+//   return (
+//     <div>
+//       <input placeholder="Enter Post Title" onChange={event => setQuery(event.target.value)} />
+//     {
+//       Product.map((post, index) => {
+//         <div key={index}>
+//           <p>{post.title}</p>
+//           <p>{post.author}</p>
+//         </div>
+//       })
+//     }
+//     </div>
+//   )
+// };
+
+//   return (
+//     <section>
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           type="text"
+//           name="address"
+//           value={makeProduct.brand}
+//           onChange={onProductSearchChange}
+//         />
+//       </form>
+//     </section>
+//   );
+// };
+
+// export default ProductSearch;
