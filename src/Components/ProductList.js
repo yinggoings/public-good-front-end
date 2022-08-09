@@ -31,7 +31,7 @@ ProductList.propTypes = {
       brand: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
       availability: PropTypes.bool.isRequired,
-      quantity: PropTypes.number.isRequired,
+      quantity: PropTypes.number,
       image: PropTypes.string.isRequired,
       retailer: PropTypes.string.isRequired,
     })
