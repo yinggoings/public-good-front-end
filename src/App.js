@@ -4,10 +4,15 @@ import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import DonateNow from "./components/DonateNow";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { FaBars, FaCoffee, FiMenu, BiMenu } from "react-icons/fa";
+<<<<<<< Updated upstream
 import { FiMenu } from "react-icons/fi";
 import Navbar from "./components/Navbar";
+=======
+// import { FiMenu } from "react-icons/fi";
+
+>>>>>>> Stashed changes
 const App = () => {
   const [products, setProducts] = useState([
     {
