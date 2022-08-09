@@ -1,9 +1,74 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-// import { useState } from "react";
-// import "./ProductSearch.css";
-// import Product from "./Product";
+import React from "react";
+import PropTypes from "prop-types";
+import { useState } from "react";
+import "./ProductSearch.css";
+import Product from "./Product";
 
+const ProductSearch = ({ products, inputText, inputHandler }) => {
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [filteredName, setFilteredName] = useState("");
+
+  // const handleSearch = (newSearchQuery) => {
+  //   setSearchQuery(newSearchQuery);
+  //   products.map((product) => {
+  //     if (product.includes(searchQuery)) {
+  //       setFilteredName(product);
+  //     }
+  //   });
+  // };
+
+  const filteredData = products.filter((product) => {
+    //if no input the return the original
+    if (inputText === "") {
+      return "";
+    }
+    //return the item which contains the user input
+    else {
+      return product.name.toLowerCase().includes(inputText);
+    }
+  });
+  return (
+    <div>
+      <h1>Product Search</h1>
+      <input
+        type="text"
+        placeholder="Search for a product, like Similac"
+        onChange={inputHandler}
+      />
+      <ul>
+        {filteredData.map((product) => (
+          // <li key={product.id}>{product.name}</li>
+          <Product
+            key={product.id}
+            name={product.name}
+            brand={product.brand}
+            price={product.price}
+            availability={product.availability}
+            quantity={product.quantity}
+            image={product.image}
+            retailer={product.retailer}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+
+  // const onFormChange = (event) => {
+  //   handleSearch(event.target.value);
+  // };
+
+  // const handleFormSubmission = (event) => {
+  //   event.preventDefault();
+  //   props.handleSubmission(catData);
+  // };
+
+  // return (
+  //   <form onSubmit={handleFormSubmission}>
+  //     <label>search.</label>
+  //     <input type="text" onChange={onFormChange} />
+  //   </form>
+  // );
+};
 
 //   brand: "",
 // };
@@ -59,4 +124,4 @@
 //   );
 // };
 
-// export default ProductSearch;
+export default ProductSearch;

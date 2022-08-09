@@ -1,17 +1,21 @@
 import "./App.css";
-import Product from "./components/Product.js";
 import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import DonateNow from "./components/DonateNow";
 import ProductSearch from "./components/ProductSearch";
 
 import { useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { FaBars, FaCoffee, FiMenu, BiMenu } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import Navbar from "./components/Navbar";
 
 const App = () => {
+  const [inputText, setInputText] = useState("");
+  let inputHandler = (e) => {
+    //convert input text to lower case
+    var lowerCase = e.target.value.toLowerCase();
+    setInputText(lowerCase);
+  };
+
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -101,16 +105,21 @@ const App = () => {
         "https://target.scene7.com/is/image/Target/GUEST_4e6608e1-dfa0-4950-8b5b-ecd2c675afa9",
       retailer: "Target",
     },
+    {
+      id: 9,
+      name: "Gerber Good Start SoothePro Non-GMO Powder Infant Formula",
+      brand: "Gerber",
+      price: 29.99,
+      availability: true,
+      quantity: null,
+      image:
+        "https://target.scene7.com/is/image/Target/GUEST_1d31ad6f-ff97-4559-ad24-1bcc0e6de308",
+      retailer: "Target",
+    },
   ]);
 
   return (
     <div className="App">
-      {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
-      {/* <FontAwesomeIcon icon={FaBars} /> */}
-      {/* <FontAwesomeIcon icon={FaCoffee} /> */}
-      {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
-      {/* <i class="fa-solid fa-bars"></i> */}
-      {/* <FiMenu /> */}
       <Navbar />
       {/* <header className="App-header">
         <h1 className="App-name">PUBLIC GOOD.</h1>
@@ -129,10 +138,34 @@ const App = () => {
       <nav className="Search-bar"></nav>
       <main className="App-content">
         <div>
+          {/* {inputText === "" ? (
+            <ProductList products={products} />
+          ) : (
+            <ProductSearch
+              products={products}
+              inputHandler={inputHandler}
+              inputText={inputText}
+            />
+          )} */}
+
+          {/* {inputText !== "" ? (
+            <ProductSearch
+              products={products}
+              inputHandler={inputHandler}
+              inputText={inputText}
+            />
+          ) : (
+            <ProductList products={products} />
+          )} */}
+          <ProductSearch
+            products={products}
+            inputHandler={inputHandler}
+            inputText={inputText}
+          />
+          {inputText !== "" ? <h1>All Products</h1> : ""}
           <ProductList products={products} />
           <DonateNow />
           <Footer />
-          {/* <ProductSearch products={products} /> */}
         </div>
       </main>
     </div>

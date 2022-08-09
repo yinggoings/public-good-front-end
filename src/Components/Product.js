@@ -4,6 +4,19 @@ import PropTypes from "prop-types";
 import ProductImage from "./ProductImage";
 
 const Product = (props) => {
+  let availability;
+  const determineAvailability = () => {
+    if (props.quantity > 0) {
+      availability = `${props.quantity} available at ${props.retailer}`;
+      return availability;
+    } else if (props.quantity === null && !props.availability) {
+      availability = "Sold out";
+      return availability;
+    } else if (props.quantity === null && props.availability) {
+      availability = `In stock at ${props.retailer}`;
+      return availability;
+    }
+  };
   return (
     <div className="product">
       <ul>
@@ -25,6 +38,9 @@ const Product = (props) => {
             <p id="product-name product-name-container">{props.name}</p>
             <p id="product-price product-price-container">{`$${props.price}`}</p>
             <p id="product-quantity product-quantity-container">
+              {/* {console.log(determineAvailability())} */}
+
+              {/* {console.log(determineAvailability())} */}
               {props.quantity === null
                 ? "Sold out"
                 : `${props.quantity} units available at ${props.retailer}`}
