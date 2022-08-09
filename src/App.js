@@ -7,7 +7,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { FaBars, FaCoffee, FiMenu, BiMenu } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
-
+import Navbar from "./components/Navbar";
 const App = () => {
   const [products, setProducts] = useState([
     {
@@ -108,20 +108,21 @@ const App = () => {
       {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
       {/* <i class="fa-solid fa-bars"></i> */}
       {/* <FiMenu /> */}
-      <header className="App-header">
+      <Navbar />
+      {/* <header className="App-header">
         <h1 className="App-name">PUBLIC GOOD.</h1>
 
         <ul className="links">
           <li className="nav-link">REGISTER.</li>
           <li className="nav-link">LOG IN.</li>
           <li className="nav-link">CONTACT US.</li>
-        </ul>
+        </ul> */}
 
-        {/* <h1 className="App-name">PUBLIC GOOD.</h1>
+      {/* <h1 className="App-name">PUBLIC GOOD.</h1>
         <h2 className="Navigation-bar">REGISTER.</h2>
         <h2 className="Navigation-bar">LOG IN.</h2>
         <h2 className="Navigation-bar">CONTACT US.</h2> */}
-      </header>
+      {/* </header> */}
       <nav className="Search-bar"></nav>
       <main className="App-content">
         <div>

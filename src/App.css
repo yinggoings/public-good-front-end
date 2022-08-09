@@ -75,7 +75,7 @@
   right: 20px;
   height: 5vh; 
   width: 20vw; 
-  font-size: calc(1px + 1vmin);
+  /* font-size: calc(1px + 1vmin); */
   margin: 0;
   /* justify-content: end; */
   /* float: right;  */
