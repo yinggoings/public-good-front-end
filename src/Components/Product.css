@@ -59,3 +59,14 @@ img:not(.footerImage) {
     font-weight: bold;
     text-decoration: underline;
 }
+
+ul li .image-container:hover,ul li .image-container:focus{
+    box-shadow:10px 10px 7px rgba(0,0,0,.7);
+    transform: scale(2.00);
+    position:relative;
+    z-index:5;
+}
+
+ul li{
+    margin:1em;
+}
