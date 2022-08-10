@@ -1,7 +1,7 @@
 import React from "react";
 // import PropTypes from "prop-types";
 import { useState } from "react";
-import "./AddressSearch.ss";
+import "./AddressSearch.css";
 
 const defaultAddressSearch = {
   address: "",

@@ -7,12 +7,8 @@ import DonateNow from "./components/DonateNow";
 import UserLocation from "./components/UserLocation";
 // import DropPin from "./images/icons8-drop-pin-icon.png";
 import { IoMdPin } from "react-icons/io";
-
-
+import AddressSearch from "./components/AddressSearch";
 import { useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { FaBars, FaCoffee, FiMenu, BiMenu } from "react-icons/fa";
-// import { FiMenu } from "react-icons/fi";
 import Navbar from "./components/Navbar";
 
 // const storeLocation = [
@@ -98,7 +94,6 @@ import Navbar from "./components/Navbar";
 // ]
 
 const products = [
-
   {
     id: 1,
     name: "Gerber Good Start SoothePro Non-GMO Powder Infant Formula",
@@ -187,14 +182,12 @@ const products = [
       "https://target.scene7.com/is/image/Target/GUEST_4e6608e1-dfa0-4950-8b5b-ecd2c675afa9",
     retailer: "Target",
   },
-]
+];
 
 const App = () => {
-  
   const [searchQuery, setSearchQuery] = useState("");
-    
-  const [productsDisplayed, setDisplayedProducts] = useState(products);
 
+  const [productsDisplayed, setDisplayedProducts] = useState(products);
 
   const filter = (s) => {
     const keyword = s.target.value;
@@ -224,37 +217,33 @@ const App = () => {
   //     setUserLocation(accessUserLocation)
   //   }
   // };
-//  {
-//  }
-//     userLocation.loaded === true && userLocation.location === "Access to user location was denied"
-//       ? "Please manually update your address."
-//       : userLocation.loaded === true && userLocation.location !== "Access to user location was denied"
-//       ? `${userLocation.coordinates.lat}, ${userLocation.coordinates.long}`
-//       : `${userLocation.location}`;
+  //  {
+  //  }
+  //     userLocation.loaded === true && userLocation.location === "Access to user location was denied"
+  //       ? "Please manually update your address."
+  //       : userLocation.loaded === true && userLocation.location !== "Access to user location was denied"
+  //       ? `${userLocation.coordinates.lat}, ${userLocation.coordinates.long}`
+  //       : `${userLocation.location}`;
+
+  const [locationInput, setLocationInput] = useState("");
+  const [loadedLocation, setLoadedLocation] = useState(false);
+  const [locationError, setLocationError] = useState("");
+  const setLocation = () => {
+    if (userLocation.coordinates === "Access to user location was denied") {
+      setLocationError(
+        "Access to user location was denied. Please manually update your address."
+      );
+    }
+
+    setLocationInput(
+      `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
+    );
+    setLoadedLocation(true);
+  };
 
   return (
     <div className="App">
-      {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
-      {/* <FontAwesomeIcon icon={FaBars} /> */}
-      {/* <FontAwesomeIcon icon={FaCoffee} /> */}
-      {/* <FontAwesomeIcon icon="fa-solid fa-bars" /> */}
-      {/* <i class="fa-solid fa-bars"></i> */}
-      {/* <FiMenu /> */}
       <Navbar />
-      {/* <header className="App-header">
-        <h1 className="App-name">PUBLIC GOOD.</h1>
-
-        <ul className="links">
-          <li className="nav-link">REGISTER.</li>
-          <li className="nav-link">LOG IN.</li>
-          <li className="nav-link">CONTACT US.</li>
-        </ul> */}
-
-      {/* <h1 className="App-name">PUBLIC GOOD.</h1>
-        <h2 className="Navigation-bar">REGISTER.</h2>
-        <h2 className="Navigation-bar">LOG IN.</h2>
-        <h2 className="Navigation-bar">CONTACT US.</h2> */}
-      {/* </header> */}
       <nav className="search-container">
         <div className="user-input">
           <div>
@@ -267,23 +256,46 @@ const App = () => {
               placeholder="Search Products"
             />
           </div>
-          <div className="arrow"/>
+          <div className="arrow" />
+          {locationError}
           <div className="location-container">
-            
             <input
               type="search"
               label="address-search"
-              value={userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied"? `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}` : "Location"}
+              value={
+                locationInput && loadedLocation && !locationError
+                  ? locationInput
+                  : ""
+                // userLocation.loaded === true &&
+                // userLocation.coordinates !==
+                //   "Access to user location was denied"
+                //   ? setLocationInput(
+                //       `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
+                //     )
+                //   : ""
+              }
               // value={`${userLocation.coordinates}`}
               // value={userLocation}
               // onChange=""
               className="address-input"
               placeholder="Location"
             />
-            {/* <button className="dropPin" onClick={UserLocation()}> <IoMdPin /></button> */}
-            {userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied"
+            <button
+              className="dropPin"
+              onClick={setLocation}
+              // onClick={() =>
+              //   setLocationInput(
+              //     `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
+              //   )
+              // }
+              // onClick={loadedLocation ? setLocation() : ""}
+            >
+              <IoMdPin />
+            </button>
+            {/* {userLocation.loaded === true &&
+            userLocation.coordinates !== "Access to user location was denied"
               ? ""
-              : "Access to user location was denied. Please manually update your address."}
+              : "Access to user location was denied. Please manually update your address."} */}
           </div>
         </div>
       </nav>
