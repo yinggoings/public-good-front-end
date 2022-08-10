@@ -5,18 +5,6 @@ import "./ProductSearch.css";
 import Product from "./Product";
 
 const ProductSearch = ({ products, inputText, inputHandler }) => {
-  // const [searchQuery, setSearchQuery] = useState("");
-  // const [filteredName, setFilteredName] = useState("");
-
-  // const handleSearch = (newSearchQuery) => {
-  //   setSearchQuery(newSearchQuery);
-  //   products.map((product) => {
-  //     if (product.includes(searchQuery)) {
-  //       setFilteredName(product);
-  //     }
-  //   });
-  // };
-
   const filteredData = products.filter((product) => {
     //if no input the return the original
     if (inputText === "") {
@@ -40,6 +28,7 @@ const ProductSearch = ({ products, inputText, inputHandler }) => {
           // <li key={product.id}>{product.name}</li>
           <Product
             key={product.id}
+            id={product.id}
             name={product.name}
             brand={product.brand}
             price={product.price}

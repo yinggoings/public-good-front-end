@@ -116,6 +116,17 @@ const App = () => {
         "https://target.scene7.com/is/image/Target/GUEST_1d31ad6f-ff97-4559-ad24-1bcc0e6de308",
       retailer: "Target",
     },
+    {
+      id: 10,
+      name: "Gerber Good Start SoothePro Non-GMO Powder Infant Formula",
+      brand: "Gerber",
+      price: 29.99,
+      availability: false,
+      quantity: 0,
+      image:
+        "https://target.scene7.com/is/image/Target/GUEST_1d31ad6f-ff97-4559-ad24-1bcc0e6de308",
+      retailer: "Target",
+    },
   ]);
 
   return (

@@ -3,18 +3,27 @@ import "./Product.css";
 import PropTypes from "prop-types";
 import ProductImage from "./ProductImage";
 
-const Product = (props) => {
-  let availability;
+const Product = ({
+  price,
+  availability,
+  retailer,
+  id,
+  image,
+  brand,
+  quantity,
+  name,
+}) => {
+  let availabilityInfo;
   const determineAvailability = () => {
-    if (props.quantity > 0) {
-      availability = `${props.quantity} available at ${props.retailer}`;
-      return availability;
-    } else if (props.quantity === null && !props.availability) {
-      availability = "Sold out";
-      return availability;
-    } else if (props.quantity === null && props.availability) {
-      availability = `In stock at ${props.retailer}`;
-      return availability;
+    if (quantity > 0) {
+      availabilityInfo = `${quantity} available at ${retailer}`;
+      return availabilityInfo;
+    } else if ((quantity === null || quantity === 0) && !availability) {
+      availabilityInfo = "Sold out";
+      return availabilityInfo;
+    } else if (quantity === null && availability) {
+      availabilityInfo = `In stock at ${retailer}`;
+      return availabilityInfo;
     }
   };
   return (
@@ -29,21 +38,23 @@ const Product = (props) => {
               id="product-brand product-brand-container"
               style={{ fontWeight: "bold" }}
             >
-              {props.brand}
+              {brand}
             </p>
             <p className="product-image image-container">
-              <ProductImage image={props.image} />
+              <ProductImage image={image} />
             </p>
 
-            <p id="product-name product-name-container">{props.name}</p>
-            <p id="product-price product-price-container">{`$${props.price}`}</p>
+            <p id="product-name product-name-container">{name}</p>
+            <p id="product-price product-price-container">{`$${price}`}</p>
             <p id="product-quantity product-quantity-container">
               {/* {console.log(determineAvailability())} */}
 
               {/* {console.log(determineAvailability())} */}
-              {props.quantity === null
+              {determineAvailability()}
+              {/* {availabilityInfo} */}
+              {/* {props.quantity === null
                 ? "Sold out"
-                : `${props.quantity} units available at ${props.retailer}`}
+                : `${props.quantity} units available at ${props.retailer}`} */}
               {/* {`${props.quantity} units available at ${props.retailer}`} */}
             </p>
             {/* <p id='retailer'>{`Available at ${props.retailer}`}</p> */}
