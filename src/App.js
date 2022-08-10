@@ -4,7 +4,7 @@ import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import DonateNow from "./components/DonateNow";
 // import ProductSearch from "./components/ProductSearch";
-import useGeoLocation from "./components/UserLocation";
+import UserLocation from "./components/UserLocation";
 // import DropPin from "./images/icons8-drop-pin-icon.png";
 import { IoMdPin } from "react-icons/io";
 
@@ -211,7 +211,7 @@ const App = () => {
     setSearchQuery(keyword);
   };
 
-  const userLocation = useGeoLocation();
+  const userLocation = UserLocation();
   // const [userLocation, setUserLocation] = useState("Location")
 
   // const useUserLocation = (a) => {
@@ -269,6 +269,7 @@ const App = () => {
           </div>
           <div className="arrow"/>
           <div className="location-container">
+            
             <input
               type="search"
               label="address-search"
@@ -279,7 +280,7 @@ const App = () => {
               className="address-input"
               placeholder="Location"
             />
-            <button className="dropPin" onClick={userLocation}> <IoMdPin /></button>
+            {/* <button className="dropPin" onClick={UserLocation()}> <IoMdPin /></button> */}
             {userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied"
               ? ""
               : "Access to user location was denied. Please manually update your address."}
