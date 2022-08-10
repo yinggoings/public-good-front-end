@@ -16,6 +16,10 @@ const App = () => {
     setInputText(lowerCase);
   };
 
+  const clearInput = () => {
+    setInputText("");
+  };
+
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -172,6 +176,7 @@ const App = () => {
             products={products}
             inputHandler={inputHandler}
             inputText={inputText}
+            clearInput={clearInput}
           />
           {/* {inputText !== "" ? <h1>All Products</h1> : ""} */}
           {inputText === "" ? <ProductList products={products} /> : ""}

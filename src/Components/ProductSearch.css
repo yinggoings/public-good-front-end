@@ -4,3 +4,12 @@ input {
         width: 60%
         } */
 }
+
+.clear {
+    font-size: 1.5rem;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}

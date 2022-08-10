@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import "./ProductSearch.css";
 import Product from "./Product";
+import { TiDelete } from "react-icons/ti";
 
-const ProductSearch = ({ products, inputText, inputHandler }) => {
+const ProductSearch = ({ products, inputText, inputHandler, clearInput }) => {
   const filteredData = products.filter((product) => {
     //if no input the return the original
     if (inputText === "") {
@@ -25,14 +26,20 @@ const ProductSearch = ({ products, inputText, inputHandler }) => {
       return `${filteredData.length} results`;
     }
   };
+
   return (
     <div>
       <h1>Product Search</h1>
-      <input
-        type="text"
-        placeholder="Search for a product, like Similac"
-        onChange={inputHandler}
-      />
+      <div className="search">
+        <input
+          type="text"
+          placeholder="Search for a product, like Similac"
+          onChange={inputHandler}
+          value={inputText}
+        />
+        <TiDelete className="clear" onClick={clearInput} />
+      </div>
+
       <ul>
         {/* {console.log(filteredData)}
         {filteredData.length === 0 && inputText.length > 0
