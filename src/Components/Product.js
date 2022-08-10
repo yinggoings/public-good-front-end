@@ -6,8 +6,8 @@ import ProductImage from "./ProductImage";
 const Product = (props) => {
   return (
     <div className="product">
-      <ul>
-        <li>
+      <ul className="unordered">
+        <li clssName="list-item">
           <section className="product-container">
             {/* <button className="select-product-button" onClick={}> */}
             {/* button description here */}

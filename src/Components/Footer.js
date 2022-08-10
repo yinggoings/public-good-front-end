@@ -1,7 +1,7 @@
 import GitHubLogo from "../images/icons8-github.svg";
-import InstagramLogo from "../images/icons8-instagram.svg";
-import RedditLogo from "../images/icons8-reddit.svg";
-import TwitterLogo from "../images/icons8-twitter-circled.svg";
+// import InstagramLogo from "../images/icons8-instagram.svg";
+// import RedditLogo from "../images/icons8-reddit.svg";
+// import TwitterLogo from "../images/icons8-twitter-circled.svg";
 import EmailLogo from "../images/icons8-email.png";
 // import { FaGithub, FaGithubSquare } from "react-icons/fa";
 // import { MdEmail } from "react-icons/md";

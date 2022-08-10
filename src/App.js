@@ -1,10 +1,12 @@
 import "./App.css";
-import Product from "./components/Product.js";
+// import Product from "./components/Product.js";
 import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import DonateNow from "./components/DonateNow";
-import ProductSearch from "./components/ProductSearch";
+// import ProductSearch from "./components/ProductSearch";
 import useGeoLocation from "./components/UserLocation";
+// import DropPin from "./images/icons8-drop-pin-icon.png";
+import { IoMdPin } from "react-icons/io";
 
 
 import { useState } from "react";
@@ -12,6 +14,88 @@ import { useState } from "react";
 // import { FaBars, FaCoffee, FiMenu, BiMenu } from "react-icons/fa";
 // import { FiMenu } from "react-icons/fi";
 import Navbar from "./components/Navbar";
+
+// const storeLocation = [
+
+//     {
+//       "storeId": 5571,
+//       "storeLong": -122.9377466,
+//       "storeLan": 47.0345622,
+//       "storeName": "Walgreens",
+//       "storeLongName": "Walgreens-Olympia,WA",
+//       "storeAddress": "1510 Cooper Point Rd Sw",
+//       "storeCity": "Olympia",
+//       "storeState": "WA",
+//       "storeZipCode": 98502,
+//       "storePhoneNumber": "(360) 570-8008",
+//       "storeDetails": "1510 Cooper Point Rd Sw, Olympia,WA 98502|(360) 570-8008|Store #5571 [24 Hours ST/RX]"
+//     },
+//     {
+//       "storeId": 6590,
+//       "storeLong": -122.3211975,
+//       "storeLan": 47.6149788,
+//       "storeName": "Walgreens",
+//       "storeLongName": "Walgreens-Seattle,WA",
+//       "storeAddress": "1531 Broadway",
+//       "storeCity": "Seattle",
+//       "storeState": "WA",
+//       "storeZipCode": 98122,
+//       "storePhoneNumber": "(206) 204-0599",
+//       "storeDetails": "1531 Broadway, Seattle,WA 98122|(206) 204-0599|Store #6590"
+//     },
+//     {
+//       "storeId": 6194,
+//       "storeLong": -122.3386344,
+//       "storeLan": 47.6094534,
+//       "storeName": "Walgreens",
+//       "storeLongName": "Walgreens-Seattle,WA",
+//       "storeAddress": "222 Pike St",
+//       "storeCity": "Seattle",
+//       "storeState": "WA",
+//       "storeZipCode": 98101,
+//       "storePhoneNumber": "(206) 903-8392",
+//       "storeDetails": "222 Pike St, Seattle,WA 98101|(206) 903-8392|Store #6194"
+//     },
+//     {
+//       "storeId": 7034,
+//       "storeLong": -117.4104309,
+//       "storeLan": 47.6926956,
+//       "storeName": "Walgreens",
+//       "storeLongName": "Walgreens-Spokane,WA",
+//       "storeAddress": "12 E Empire Ave",
+//       "storeCity": "Spokane",
+//       "storeState": "WA",
+//       "storeZipCode": "99207",
+//       "storePhoneNumber": "(509) 325-0781",
+//       "storeDetails": "12 E Empire Ave, Spokane,WA 99207|(509) 325-0781|Store #7034 [24 Hours ST/RX]"
+//     },
+//     {
+//       "storeId": 2205,
+//       "storeLong": -117.4212799,
+//       "storeLan": 47.8358612,
+//       "storeName": "Walgreens",
+//       "storeLongName": "Walgreens-Spokane,WA",
+//       "storeAddress": "12315 Hwy 395",
+//       "storeCity": "Spokane",
+//       "storeState": "WA",
+//       "storeZipCode": 99218,
+//       "storePhoneNumber": "(509) 466-7461",
+//       "storeDetails": "12315 Hwy 395, Spokane,WA 99218|(509) 466-7461|Store #2205"
+//     },
+//     {
+//       "storeId": 5817,
+//       "storeLong": -117.43766,
+//       "storeLan": 47.680488,
+//       "storeName": "Walgreens",
+//       "storeLongName": "Walgreens-Spokane,WA",
+//       "storeAddress": "1708 W Northwest Blvd",
+//       "storeCity": "Spokane",
+//       "storeState": "WA",
+//       "storeZipCode": "99205",
+//       "storePhoneNumber": "(509) 323-0309",
+//       "storeDetails": "1708 W Northwest Blvd, Spokane,WA 99205|(509) 323-0309|Store #5817"
+//     },
+// ]
 
 const products = [
 
@@ -127,13 +211,26 @@ const App = () => {
     setSearchQuery(keyword);
   };
 
-  const location = useGeoLocation();
-  const UserLocation = 
-    location.loaded === true && location.message === "Access to user location was denied"
-      ? "Please manually update your address."
-      : location.loaded === true
-      ? `${location.coordinates.lat}, ${location.coordinates.long}`
-      : "Location";
+  const userLocation = useGeoLocation();
+  // const [userLocation, setUserLocation] = useState("Location")
+
+  // const useUserLocation = (a) => {
+  //   const manualEntry = a.target.value;
+
+  //   if (manualEntry !== "") {
+  //     setUserLocation(manualEntry)
+  //   } else {
+  //     const accessUserLocation = useGeoLocation()
+  //     setUserLocation(accessUserLocation)
+  //   }
+  // };
+//  {
+//  }
+//     userLocation.loaded === true && userLocation.location === "Access to user location was denied"
+//       ? "Please manually update your address."
+//       : userLocation.loaded === true && userLocation.location !== "Access to user location was denied"
+//       ? `${userLocation.coordinates.lat}, ${userLocation.coordinates.long}`
+//       : `${userLocation.location}`;
 
   return (
     <div className="App">
@@ -171,19 +268,21 @@ const App = () => {
             />
           </div>
           <div className="arrow"/>
-          <div>
+          <div className="location-container">
             <input
               type="search"
               label="address-search"
-              // value={`${location.coordinates.lat}, ${location.coordinates.long}`}
-              value={UserLocation}
-              // onChange={UserLocation}
+              value={userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied"? `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}` : "Location"}
+              // value={`${userLocation.coordinates}`}
+              // value={userLocation}
+              // onChange=""
               className="address-input"
-              // placeholder="Location"
+              placeholder="Location"
             />
-            {/* {location.loaded === true
+            <button className="dropPin" onClick={userLocation}> <IoMdPin /></button>
+            {userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied"
               ? ""
-              : "Access to user location was denied. Please manually update your address."} */}
+              : "Access to user location was denied. Please manually update your address."}
           </div>
         </div>
       </nav>

@@ -19,7 +19,7 @@ const useGeoLocation = () => {
     const onError = (error) => {
         setLocation({
             loaded: true,
-            message: "Access to user location was denied"
+            coordinates: "Access to user location was denied"
         });
     };
 

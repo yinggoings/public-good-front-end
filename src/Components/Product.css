@@ -27,12 +27,12 @@ img:not(.footerImage) {
     background-color: white;
 }
 
-.product-brand {
+/* .product-brand { */
     /* font-weight: bold;
     text-decoration: underline; */
     /* text-align: center;
     text-indent: 63px; */
-}
+/* } */
 
 #product-name {
     font-size: calc(4px + 2vmin);
@@ -73,6 +73,6 @@ ul li{
     margin:1em;
 }
 
-ul li img:not(.footerImage):hover,ul li img:not(.footerImage):focus{
+ul li img:not(.footerImage):hover,ul li img:not(.footerImage) {
     border: none;
 }
