@@ -15,6 +15,16 @@ const ProductSearch = ({ products, inputText, inputHandler }) => {
       return product.name.toLowerCase().includes(inputText);
     }
   });
+
+  const displayResults = () => {
+    if (filteredData.length === 0 && inputText.length > 0) {
+      return "No products found";
+    } else if (filteredData.length === 0 && inputText.length === 0) {
+      return "";
+    } else {
+      return `${filteredData.length} results`;
+    }
+  };
   return (
     <div>
       <h1>Product Search</h1>
@@ -24,6 +34,11 @@ const ProductSearch = ({ products, inputText, inputHandler }) => {
         onChange={inputHandler}
       />
       <ul>
+        {/* {console.log(filteredData)}
+        {filteredData.length === 0 && inputText.length > 0
+          ? "No products found"
+          : `${filteredData.length} results`} */}
+        {displayResults()}
         {filteredData.map((product) => (
           // <li key={product.id}>{product.name}</li>
           <Product
