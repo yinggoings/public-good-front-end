@@ -13,8 +13,9 @@ const Product = ({
   quantity,
   name,
 }) => {
-  let availabilityInfo;
   const determineAvailability = () => {
+    let availabilityInfo;
+
     if (quantity > 0) {
       availabilityInfo = `${quantity} available at ${retailer}`;
       return availabilityInfo;
@@ -47,11 +48,7 @@ const Product = ({
             <p id="product-name product-name-container">{name}</p>
             <p id="product-price product-price-container">{`$${price}`}</p>
             <p id="product-quantity product-quantity-container">
-              {/* {console.log(determineAvailability())} */}
-
-              {/* {console.log(determineAvailability())} */}
               {determineAvailability()}
-              {/* {availabilityInfo} */}
               {/* {props.quantity === null
                 ? "Sold out"
                 : `${props.quantity} units available at ${props.retailer}`} */}

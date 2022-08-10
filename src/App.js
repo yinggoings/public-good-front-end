@@ -173,8 +173,10 @@ const App = () => {
             inputHandler={inputHandler}
             inputText={inputText}
           />
-          {inputText !== "" ? <h1>All Products</h1> : ""}
-          <ProductList products={products} />
+          {/* {inputText !== "" ? <h1>All Products</h1> : ""} */}
+          {inputText === "" ? <ProductList products={products} /> : ""}
+
+          {/* <ProductList products={products} /> */}
           <DonateNow />
           <Footer />
         </div>
