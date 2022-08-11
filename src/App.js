@@ -2,18 +2,14 @@ import "./App.css";
 import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import DonateNow from "./components/DonateNow";
-// import ProductSearch from "./components/ProductSearch";
 import UserLocation from "./components/UserLocation";
-// import DropPin from "./images/icons8-drop-pin-icon.png";
 import { IoMdPin } from "react-icons/io";
-import AddressSearch from "./components/AddressSearch";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import products from "./data/products";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
   const [productsDisplayed, setDisplayedProducts] = useState(products);
   const [address, setAddress] = useState("");
 
