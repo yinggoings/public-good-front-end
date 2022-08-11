@@ -15,6 +15,7 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const [productsDisplayed, setDisplayedProducts] = useState(products);
+  const [address, setAddress] = useState("");
 
   const filter = (s) => {
     const keyword = s.target.value;
@@ -29,6 +30,12 @@ const App = () => {
     }
 
     setSearchQuery(keyword);
+  };
+
+  const updateAddress = (e) => {
+    const updatedAddress = e.target.value;
+
+    setAddress(updatedAddress);
   };
 
   const userLocation = UserLocation();
@@ -73,10 +80,11 @@ const App = () => {
               value={
                 locationInput && loadedLocation && !locationError
                   ? locationInput
-                  : ""
+                  : address
               }
               className="address-input"
               placeholder="Location"
+              onChange={updateAddress}
             />
             <button
               className="dropPin"
