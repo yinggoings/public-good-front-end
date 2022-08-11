@@ -2,9 +2,8 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  font-family: "Work Sans";
+  font-family: “Work Sans”;
 }
-
 .App-name {
   display: flex;
   justify-content: flex-start;
@@ -13,7 +12,7 @@
   text-align: left;
   font-size: calc(18px + 2vmin);
   color: black;
-  font-family: "Work Sans";
+  font-family: “Work Sans”;
   font-weight: bold;
   /* margin-left: 1rem; */
   /* padding: 5px; */
@@ -22,25 +21,22 @@
   left: 2%;
   text-indent: 5px;
 }
-
 .search-container {
   background-color: black;
   height: 20vh;
   color: white;
   /* padding: 10px; */
 }
-
 .user-input {
   display: grid;
   width: 100%;
   /* min-height: 20vh; */
-  grid-template-areas:  "search arrow"
-                        "address arrow";
+  grid-template-areas:  “search arrow”
+                        “address arrow”;
   gap: 10px;
-  grid-template-columns: 400px 1fr; 
+  grid-template-columns: 400px 1fr;
   grid-template-rows: 10vh 1fr;
 }
-
 .search-input {
   grid-area: search;
   margin-top: 35px;
@@ -55,15 +51,14 @@
   border-radius: 50px;
   font-size: calc(5px + 1vmin);
 }
-
 .arrow {
   grid-area: arrow;
-  content: '';
+  content: ‘’;
   width: 3vmin;
 	height: 3vmin;
   border-width: .5vmin .5vmin 0 0;
   border-style: solid;
-  border-color: #fafafa;
+  border-color: #FAFAFA;
   transition: .2s ease;
   display: block;
   transform: rotate(45deg);
@@ -71,26 +66,23 @@
   margin-left: 20px;
   padding: 5px;
 }
-
 .address-input {
   grid-area: address;
   height: 4vh;
   width: 21.5vw;
   margin-left: 36px;
   padding: 0px;
-  color: rgb(99, 96, 96);
-  background-color: #DDD;
+  /* color: rgb(99, 96, 96);
+  background-color: #DDD; */
   align-content: center;
   text-align: left;
-  text-indent: 5px;
+  /* text-indent: 5px; */
   border-radius: 50px;
   font-size: calc(5px + 1vmin);
 }
-
 button img {
   grid-area: address;
 }
-
 .search-input, .address-input {
   /* display: flex;
   justify-content: flex-start; */
@@ -104,7 +96,6 @@ button img {
   border-radius: 50px;
   font-size: calc(5px + 1vmin);
 }
-
 @media screen and (max-width: 768px) {
   .search-input, .address-input {
     width: 325px;
@@ -115,15 +106,15 @@ button img {
     display: grid;
     width: 100%;
     min-height: 20vh;
-    grid-template-areas:  "search"
-                          "address";
+    grid-template-areas:  “search”
+                          “address”;
     gap: 10px;
-    grid-template-columns: 325px; 
+    grid-template-columns: 325px;
     grid-template-rows: 10vh;
     /* margin-left: 30px; */
   }
   .search-container {
-    display: grid; 
+    display: grid;
     align-items: center;
     justify-items: center;
     align-content: center;
@@ -133,11 +124,9 @@ button img {
     display: none;
   }
 }
-
 .App-content {
   padding: 5px 5px 5px 5px;
 }
-
 /* .Navigation-bar { */
   /* margin: 0;
   padding: 0; */
@@ -159,7 +148,6 @@ button img {
   top: 8px;
   right: 100px; */
 /* } */
-
 .App-header {
   /* margin: 0; */
   display: flex;
@@ -167,21 +155,19 @@ button img {
   align-items: center;
   flex-wrap: wrap;
 }
-
 .nav-link {
   margin: 0.5rem;
 }
-
 .links {
   display: flex;
   position:fixed;
   right: 20px;
-  height: 5vh; 
-  width: 20vw; 
+  height: 5vh;
+  width: 20vw;
   margin: 0;
   /* justify-content: end; */
   /* float: right;  */
-  /* position: absolute; 
+  /* position: absolute;
   right: 0;  */
 }
 /* .App-header { */
@@ -193,7 +179,6 @@ button img {
   /* flex-direction: row; */
 /* } */
 /* Change the link color to #111 (black) on hover */
-
 button img {
   height: 2px;
   max-width: 2px;
@@ -205,3 +190,54 @@ button img {
   align-self: flex-end;
   position: relative;
   }
+  .drop-pin {
+    border-style: none;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    background-color: #DDD;
+  }
+  .location-container input {
+    border: 1px solid #ccc;
+    line-height: 1;
+    box-sizing: border-box;
+    background: none;
+    border: 0;
+    padding: 0;
+    outline: none ;
+  }
+  .location-container {
+    position: relative;
+    width: 420px;
+    display: flex;
+    margin-left: 40px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius:20px;
+    color: rgb(99, 96, 96);
+    background-color: #DDD;
+    width: 95%;
+    /* outline: 5px auto -webkit-focus-ring-color;
+    -webkit-focus-ring-color: rgb(94, 158, 214) */
+  }
+  /* .location-container :focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    -webkit-focus-ring-color: rgb(94, 158, 214)
+  } */
+  .address-input {
+    margin: 0px;
+    margin-left: 10px;
+    width: 100%;
+    width: 300px;
+    position: relative;
+    height: 30px;
+    border-radius: 5px;
+  }
+  /* .address-input {
+    outline: 5px auto -webkit-focus-ring-color;
+    -webkit-focus-ring-color: rgb(94, 158, 214)
+  } */
+  /* .location-container.address-input:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    -webkit-focus-ring-color: rgb(94, 158, 214);
+  } */
