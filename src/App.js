@@ -7,7 +7,7 @@ import DonateNow from "./components/DonateNow";
 import UserLocation from "./components/UserLocation";
 // import DropPin from "./images/icons8-drop-pin-icon.png";
 import { IoMdPin } from "react-icons/io";
-
+import { backend_url } from "../env";
 
 import { useState } from "react";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,7 +20,7 @@ import Navbar from "./components/Navbar";
 //     {
 //       "storeId": 5571,
 //       "storeLong": -122.9377466,
-//       "storeLan": 47.0345622,
+//       "storeLat": 47.0345622,
 //       "storeName": "Walgreens",
 //       "storeLongName": "Walgreens-Olympia,WA",
 //       "storeAddress": "1510 Cooper Point Rd Sw",
@@ -33,7 +33,7 @@ import Navbar from "./components/Navbar";
 //     {
 //       "storeId": 6590,
 //       "storeLong": -122.3211975,
-//       "storeLan": 47.6149788,
+//       "storeLat": 47.6149788,
 //       "storeName": "Walgreens",
 //       "storeLongName": "Walgreens-Seattle,WA",
 //       "storeAddress": "1531 Broadway",
@@ -46,7 +46,7 @@ import Navbar from "./components/Navbar";
 //     {
 //       "storeId": 6194,
 //       "storeLong": -122.3386344,
-//       "storeLan": 47.6094534,
+//       "storeLat": 47.6094534,
 //       "storeName": "Walgreens",
 //       "storeLongName": "Walgreens-Seattle,WA",
 //       "storeAddress": "222 Pike St",
@@ -59,7 +59,7 @@ import Navbar from "./components/Navbar";
 //     {
 //       "storeId": 7034,
 //       "storeLong": -117.4104309,
-//       "storeLan": 47.6926956,
+//       "storeLat": 47.6926956,
 //       "storeName": "Walgreens",
 //       "storeLongName": "Walgreens-Spokane,WA",
 //       "storeAddress": "12 E Empire Ave",
@@ -72,7 +72,7 @@ import Navbar from "./components/Navbar";
 //     {
 //       "storeId": 2205,
 //       "storeLong": -117.4212799,
-//       "storeLan": 47.8358612,
+//       "storeLat": 47.8358612,
 //       "storeName": "Walgreens",
 //       "storeLongName": "Walgreens-Spokane,WA",
 //       "storeAddress": "12315 Hwy 395",
@@ -85,7 +85,7 @@ import Navbar from "./components/Navbar";
 //     {
 //       "storeId": 5817,
 //       "storeLong": -117.43766,
-//       "storeLan": 47.680488,
+//       "storeLat": 47.680488,
 //       "storeName": "Walgreens",
 //       "storeLongName": "Walgreens-Spokane,WA",
 //       "storeAddress": "1708 W Northwest Blvd",
@@ -211,19 +211,35 @@ const App = () => {
     setSearchQuery(keyword);
   };
 
-  const userLocation = UserLocation();
-  // const [userLocation, setUserLocation] = useState("Location")
+  const [userLocation, setUserLocation] = useState("");
 
-  // const useUserLocation = (a) => {
-  //   const manualEntry = a.target.value;
+  const getUserLocation = (event) => {
+    const manualEntry = event.target.value;
 
-  //   if (manualEntry !== "") {
-  //     setUserLocation(manualEntry)
-  //   } else {
-  //     const accessUserLocation = useGeoLocation()
-  //     setUserLocation(accessUserLocation)
-  //   }
-  // };
+    if (manualEntry !== "") {
+      setUserLocation(manualEntry);
+    }
+  };
+
+  // const [storesInScope, setInScopeStores] = useState([]);
+
+  // const zipCodeAPIURL = "https://www.zipcodeapi.com/rest/DemoOnly00eSe6sy6az0AuNYVNiG9aAkhGUdKflTLlaVEXOA5HZEPanu1aTJm9Yn/radius-sql.json/47.0345622/-122.9377466/degrees/50/mile/storeLat/storeLong/5
+;
+    // const URL = "http://localhost:5000/";
+
+    const fetchUserCoordinates = (storeLan, storeLong, radius) => {
+      axios
+        .get(`${backend_url}/api/v1/zipcode`)
+        .then((response) => {
+          set(response.data);
+        })
+        .catch((error) => {
+          console.log("ERROR");
+        });
+    };
+
+  
+
 //  {
 //  }
 //     userLocation.loaded === true && userLocation.location === "Access to user location was denied"
@@ -273,17 +289,23 @@ const App = () => {
             <input
               type="search"
               label="address-search"
-              value={userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied"? `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}` : "Location"}
+              // value={userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied"? `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}` : "Location"}
+              // value={`${userLocation.coordinates.lat}, ${userLocation.coordinates.long}`}
               // value={`${userLocation.coordinates}`}
-              // value={userLocation}
-              // onChange=""
+              // value=
+              onChange={getUserLocation}
+              // defaultValue="Location"
               className="address-input"
               placeholder="Location"
             />
-            {/* <button className="dropPin" onClick={UserLocation()}> <IoMdPin /></button> */}
-            {userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied"
-              ? ""
-              : "Access to user location was denied. Please manually update your address."}
+            <button className="dropPin" onClick={() => {
+              this.getUserGeoLocation();
+              this.setUserLocation(`${userLocation.coordinates.lat}, ${userLocation.coordinates.long}`)}}>
+              <IoMdPin />
+            </button>
+            {/* {userLocation.loaded === true && userLocation.coordinates !== "Access to user location was denied" */}
+              {/* ? ""
+              : "Access to user location was denied. Please manually update your address."} */}
           </div>
         </div>
       </nav>

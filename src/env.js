@@ -1,0 +1,1 @@
+export const backend_url = "https://public-good-app.herokuapp.com/";
