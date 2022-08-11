@@ -1,5 +1,4 @@
 import "./App.css";
-// import Product from "./components/Product.js";
 import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import DonateNow from "./components/DonateNow";
@@ -205,26 +204,6 @@ const App = () => {
   };
 
   const userLocation = UserLocation();
-  // const [userLocation, setUserLocation] = useState("Location")
-
-  // const useUserLocation = (a) => {
-  //   const manualEntry = a.target.value;
-
-  //   if (manualEntry !== "") {
-  //     setUserLocation(manualEntry)
-  //   } else {
-  //     const accessUserLocation = useGeoLocation()
-  //     setUserLocation(accessUserLocation)
-  //   }
-  // };
-  //  {
-  //  }
-  //     userLocation.loaded === true && userLocation.location === "Access to user location was denied"
-  //       ? "Please manually update your address."
-  //       : userLocation.loaded === true && userLocation.location !== "Access to user location was denied"
-  //       ? `${userLocation.coordinates.lat}, ${userLocation.coordinates.long}`
-  //       : `${userLocation.location}`;
-
   const [locationInput, setLocationInput] = useState("");
   const [loadedLocation, setLoadedLocation] = useState(false);
   const [locationError, setLocationError] = useState("");
@@ -234,13 +213,14 @@ const App = () => {
         "Access to user location was denied. Please manually update your address."
       );
     }
+    // console.log(`setlocation: ${userLocation.coordinates.lat}`);
 
     setLocationInput(
       `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
     );
     setLoadedLocation(true);
   };
-
+  // console.log(`render: ${userLocation.coordinates.lat}`);
   return (
     <div className="App">
       <Navbar />
@@ -266,36 +246,17 @@ const App = () => {
                 locationInput && loadedLocation && !locationError
                   ? locationInput
                   : ""
-                // userLocation.loaded === true &&
-                // userLocation.coordinates !==
-                //   "Access to user location was denied"
-                //   ? setLocationInput(
-                //       `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
-                //     )
-                //   : ""
               }
-              // value={`${userLocation.coordinates}`}
-              // value={userLocation}
-              // onChange=""
               className="address-input"
               placeholder="Location"
             />
             <button
               className="dropPin"
+              disabled={!userLocation.loaded}
               onClick={setLocation}
-              // onClick={() =>
-              //   setLocationInput(
-              //     `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
-              //   )
-              // }
-              // onClick={loadedLocation ? setLocation() : ""}
             >
               <IoMdPin />
             </button>
-            {/* {userLocation.loaded === true &&
-            userLocation.coordinates !== "Access to user location was denied"
-              ? ""
-              : "Access to user location was denied. Please manually update your address."} */}
           </div>
         </div>
       </nav>
