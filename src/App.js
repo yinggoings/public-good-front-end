@@ -40,7 +40,7 @@ const App = () => {
 
   const fetchZip = () => {
     axios
-      .get(`process.env.${URL}`)
+      .get(`${URL}`)
       .then((response) => {
         console.log("zipcode request");
         const availableZips = response.data;
@@ -105,7 +105,8 @@ const App = () => {
             <button
               className="dropPin"
               disabled={!userLocation.loaded}
-              onClick={(setLocation, fetchZip)}
+              onClick={setLocation}
+              onKeyDown={fetchZip}
             >
               <IoMdPin />
             </button>
