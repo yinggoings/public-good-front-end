@@ -9,8 +9,8 @@ import Navbar from "./components/Navbar";
 import products from "./data/products";
 import axios from "axios";
 import SearchForm from "./components/SearchForm";
-
 const App = () => {
+  const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
   const [searchQuery, setSearchQuery] = useState("");
   const [productsDisplayed, setDisplayedProducts] = useState(products);
   const [address, setAddress] = useState("");
@@ -75,8 +75,7 @@ const App = () => {
     console.log("submitting form");
     axios
       .get(
-        // `https://www.zipcodeapi.com/rest/${process.env.REACT_APP_ZIP_CODE_API_KEY}/radius.json/${zipcode}/${radius}/miles`
-        `https://www.zipcodeapi.com/rest/Mcc1u9e97OAgThhE2RGcyGwiaH6B1refBtHuDUtxcTH6qJtNNGDAIaJGYfR3yuX9/radius.json/${zipcode}/${radius}/miles`
+        `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
       )
       .then((response) => {
         console.log(response.data);
