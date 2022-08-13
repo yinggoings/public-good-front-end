@@ -57,7 +57,7 @@ const App = () => {
       <Navbar />
       <nav className="search-container">
         <div className="user-input">
-          <div>
+          <div className="product-search-container">
             <input
               type="search"
               label="product-search"
@@ -65,6 +65,8 @@ const App = () => {
               onChange={filter}
               className="search-input"
               placeholder="Search Products"
+              results={5}
+              autoSave
             />
           </div>
           <div className="arrow" />
@@ -72,6 +74,7 @@ const App = () => {
           <div className="location-container">
             <input
               type="search"
+              name="address-search"
               label="address-search"
               value={
                 locationInput && loadedLocation && !locationError
@@ -79,7 +82,7 @@ const App = () => {
                   : address
               }
               className="address-input"
-              placeholder="Location"
+              placeholder="ZipCode"
               onChange={updateAddress}
             />
             <button
