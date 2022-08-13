@@ -7,6 +7,7 @@ import { IoMdPin } from "react-icons/io";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import products from "./data/products";
+import axios from "axios";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,6 +33,22 @@ const App = () => {
     const updatedAddress = e.target.value;
 
     setAddress(updatedAddress);
+  };
+
+  const URL =
+    "https://www.zipcodeapi.com/rest/REACT_APP_API_KEY/radius.json/98101/2/miles?minimal";
+
+  const fetchZip = () => {
+    axios
+      .get(`process.env.${URL}`)
+      .then((response) => {
+        console.log("zipcode request");
+        const availableZips = response.data;
+        console.log(availableZips);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const userLocation = UserLocation();
@@ -88,7 +105,7 @@ const App = () => {
             <button
               className="dropPin"
               disabled={!userLocation.loaded}
-              onClick={setLocation}
+              onClick={(setLocation, fetchZip)}
             >
               <IoMdPin />
             </button>
