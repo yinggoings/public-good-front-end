@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import products from "./data/products";
 import axios from "axios";
 import SearchForm from "./components/SearchForm";
+
 const App = () => {
   const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
   const [searchQuery, setSearchQuery] = useState("");
@@ -69,13 +70,57 @@ const App = () => {
   };
   // console.log(`render: ${userLocation.coordinates.lat}`);
 
+  // const onFormSubmit = (event) => {
+  //   // call the zipcode API with the radius and zipcode
+  //   event.preventDefault();
+  //   console.log("submitting form");
+  //   axios
+  //     .get(
+  //       `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
+  //     )
+  //     .then((response) => {
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("error!", error);
+  //     });
+  // };
+
   const onFormSubmit = (event) => {
+    // call the zipcode API with the radius and zipcode
+    event.preventDefault();
+    console.log("submitting form");
+    if (userLocation.coordinates === "Access to user location was denied") {
+      onFormSubmitZipCode(event);
+    } else {
+      onFormSubmitLatLon(event);
+      onFormSubmitZipCode(event);
+    }
+  };
+
+  const onFormSubmitZipCode = (event) => {
     // call the zipcode API with the radius and zipcode
     event.preventDefault();
     console.log("submitting form");
     axios
       .get(
         `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error!", error);
+      });
+  };
+
+  const onFormSubmitLatLon = (event) => {
+    // call the zipcode API with the radius and zipcode
+    event.preventDefault();
+    console.log("submitting form");
+    axios
+      .get(
+        `https://www.zipcodeapi.com/rest/${API_KEY}/radius-sql.json/${userLocation.coordinates.lat}/${userLocation.coordinates.long}/degrees/${radius}/mile/lat/lng/1`
       )
       .then((response) => {
         console.log(response.data);
@@ -118,14 +163,13 @@ const App = () => {
               onChange={updateZipCode}
             />
           </div>
-
-          {/* <button
+          <button
             className="dropPin"
             disabled={!userLocation.loaded}
             onClick={setLocation}
           >
             <IoMdPin />
-          </button> */}
+          </button>
           <div className="radius-container">
             <input
               type="number"
