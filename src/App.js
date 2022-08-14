@@ -164,59 +164,58 @@ const App = () => {
   return (
     <div className="App">
       <Navbar />
-      <nav className="search-container">
-        <div className="user-input">
+        <nav className="search-container">
           <form onSubmit={onFormSubmit}>
-            <div className="product-search-container">
-              {/* <label>Product Search</label> */}
-              <input
-                type="search"
-                label="product-search"
-                value={searchQuery}
-                onChange={filter}
-                className="search-input"
-                placeholder="Search Products"
-                // results={5}
-                // autoSave
-              />
+            <div className="user-input">
+              <div className="product-search-container">
+                {/* <label>Product Search</label> */}
+                <input
+                  type="search"
+                  // label="product-search"
+                  value={searchQuery}
+                  onChange={filter}
+                  className="search-input"
+                  placeholder="Search Products"
+                  // results={5}
+                  // autoSave
+                />
+              </div>
+              <div className="arrow" />
+              <div className="location-container">
+                {/* <label>Zipcode</label> */}
+                <input
+                  type="search"
+                  name="address-search"
+                  // label="address-search"
+                  value={zipcode}
+                  className="address-input"
+                  placeholder="ZipCode"
+                  onChange={updateZipCode}
+                />
+                {/* </div> */}
+                <button
+                  className="dropPin"
+                  disabled={!userLocation.loaded}
+                  onClick={setLocation}
+                >
+                  <IoMdPin />
+                </button>
+                <div className="radius-container">
+                  <input
+                    className="radius-input"
+                    type="number"
+                    name="radius"
+                    label="radius"
+                    onChange={updateRadius}
+                    value={radius}
+                  />
+                  <button type="submit">Submit</button>
+                </div>
+                {locationError}
+              </div>
             </div>
-            <div className="arrow" />
-            <div className="location-container">
-              {/* <label>Zipcode</label> */}
-              <input
-                type="search"
-                name="address-search"
-                label="address-search"
-                value={zipcode}
-                className="address-input"
-                placeholder="ZipCode"
-                onChange={updateZipCode}
-              />
-            </div>
-            <button
-              className="dropPin"
-              disabled={!userLocation.loaded}
-              onClick={setLocation}
-            >
-              <IoMdPin />
-            </button>
-
-            <div className="radius-container">
-              <input
-                type="number"
-                name="radius"
-                label="radius"
-                onChange={updateRadius}
-                value={radius}
-              />
-            </div>
-            <button type="submit">Submit</button>
-            {locationError}
           </form>
-        </div>
-      </nav>
-      
-
+        </nav>
       {/* <SearchForm
         onFormSubmit={onFormSubmit}
         searchQuery={searchQuery}
