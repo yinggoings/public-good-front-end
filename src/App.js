@@ -6,22 +6,46 @@ import UserLocation from "./components/UserLocation";
 import { IoMdPin } from "react-icons/io";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
-import products from "./data/products";
+import axios from 'axios';
+import product from "./components/Product";
+
+// import products from "./data/products";
 
 const App = () => {
+  const BACKENDURL = "https://public-good-app.herokuapp.com/api/v1/product";
+
   const [searchQuery, setSearchQuery] = useState("");
-  const [productsDisplayed, setDisplayedProducts] = useState(products);
+  // using hardcoded data state
+  const [productsDisplayed, setDisplayedProducts] = useState([]);
   const [address, setAddress] = useState("");
 
   const filter = (s) => {
+    // search string
+
     const keyword = s.target.value;
 
     if (keyword !== "") {
-      const result = products.filter((product) => {
-        return product.name.toLowerCase().startsWith(keyword.toLowerCase());
-      });
-      setDisplayedProducts(result);
-    } else {
+      let products = [];
+      // const axios = require('axios').default;
+      const params = {"searchStr": keyword};
+      // connect to backend and call getmapping to return list of product objects
+      axios.get(BACKENDURL, {"params": params})
+          .then(function (response) {
+            let productsData = response.data;
+            for (let productData of productsData) {
+              productData.buyURL = "https://www.walmart.com" + productData.buyURL;
+              let imageURL = productData["imageURL"];
+              delete productData.imageURL;
+              productData.image = imageURL;
+              console.log(productData);
+              products.push(productData);
+              console.log("!");
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      console.log("PRODUCTS: " + products);
       setDisplayedProducts(products);
     }
 
