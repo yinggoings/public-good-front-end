@@ -9,8 +9,34 @@ import Navbar from "./components/Navbar";
 import products from "./data/products";
 import axios from "axios";
 import SearchForm from "./components/SearchForm";
+import LandingPage from "./components/LandingPage";
 
 const App = () => {
+
+  const [display, setDisplay] = useState(null);
+
+  const toggleDisplay = () => {
+    if (display) {
+      console.log("you have display of", display);
+      console.log(typeof changeDisplay);
+      return (
+        <div className="products-displayed">
+          {productsDisplayed && productsDisplayed.length > 0 ? (
+            <ProductList products={productsDisplayed} />
+          ) : (
+            <h2>No products found. Please refine your search criteria.</h2>
+          )}
+        </div>
+      );
+    } else {
+      return <LandingPage />;
+    }
+  };
+
+  const changeDisplay = () => {
+    setDisplay(true);
+  };
+
   const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
   const [searchQuery, setSearchQuery] = useState("");
   const [productsDisplayed, setDisplayedProducts] = useState(products);
@@ -95,6 +121,7 @@ const App = () => {
     } else {
       onFormSubmitLatLon(event);
       onFormSubmitZipCode(event);
+      changeDisplay();
     }
   };
 
@@ -104,13 +131,15 @@ const App = () => {
     console.log("submitting form");
     axios
       .get(
-        `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
+      //   `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
       )
       .then((response) => {
+        changeDisplay();
         console.log(response.data);
       })
       .catch((error) => {
         console.log("error!", error);
+        changeDisplay();
       });
   };
 
@@ -120,69 +149,73 @@ const App = () => {
     console.log("submitting form");
     axios
       .get(
-        `https://www.zipcodeapi.com/rest/${API_KEY}/radius-sql.json/${userLocation.coordinates.lat}/${userLocation.coordinates.long}/degrees/${radius}/mile/lat/lng/1`
+      //   `https://www.zipcodeapi.com/rest/${API_KEY}/radius-sql.json/${userLocation.coordinates.lat}/${userLocation.coordinates.long}/degrees/${radius}/mile/lat/lng/1`
       )
       .then((response) => {
+        changeDisplay();
         console.log(response.data);
       })
       .catch((error) => {
         console.log("error!", error);
+        changeDisplay();
       });
   };
 
   return (
     <div className="App">
       <Navbar />
-      {/* <nav className="search-container"> */}
-      <div className="user-input">
-        <form onSubmit={onFormSubmit}>
-          <div className="product-search-container">
-            <label>Product Search</label>
-            <input
-              type="search"
-              label="product-search"
-              value={searchQuery}
-              onChange={filter}
-              className="search-input"
-              placeholder="Search Products"
-              results={5}
-              // autoSave
-            />
-          </div>
-          <div className="arrow" />
-          {locationError}
-          <div className="location-container">
-            <label>Zipcode</label>
-            <input
-              type="search"
-              name="address-search"
-              label="address-search"
-              value={zipcode}
-              className="address-input"
-              placeholder="ZipCode"
-              onChange={updateZipCode}
-            />
-          </div>
-          <button
-            className="dropPin"
-            disabled={!userLocation.loaded}
-            onClick={setLocation}
-          >
-            <IoMdPin />
-          </button>
-          <div className="radius-container">
-            <input
-              type="number"
-              name="radius"
-              label="radius"
-              onChange={updateRadius}
-              value={radius}
-            />
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-        {/* </nav> */}
-      </div>
+      <nav className="search-container">
+        <div className="user-input">
+          <form onSubmit={onFormSubmit}>
+            <div className="product-search-container">
+              {/* <label>Product Search</label> */}
+              <input
+                type="search"
+                label="product-search"
+                value={searchQuery}
+                onChange={filter}
+                className="search-input"
+                placeholder="Search Products"
+                // results={5}
+                // autoSave
+              />
+            </div>
+            <div className="arrow" />
+            <div className="location-container">
+              {/* <label>Zipcode</label> */}
+              <input
+                type="search"
+                name="address-search"
+                label="address-search"
+                value={zipcode}
+                className="address-input"
+                placeholder="ZipCode"
+                onChange={updateZipCode}
+              />
+            </div>
+            <button
+              className="dropPin"
+              disabled={!userLocation.loaded}
+              onClick={setLocation}
+            >
+              <IoMdPin />
+            </button>
+
+            <div className="radius-container">
+              <input
+                type="number"
+                name="radius"
+                label="radius"
+                onChange={updateRadius}
+                value={radius}
+              />
+            </div>
+            <button type="submit">Submit</button>
+            {locationError}
+          </form>
+        </div>
+      </nav>
+      
 
       {/* <SearchForm
         onFormSubmit={onFormSubmit}
@@ -240,13 +273,7 @@ const App = () => {
       {/* </div>
       </nav> */}
       <main className="App-content">
-        <div className="products-displayed">
-          {productsDisplayed && productsDisplayed.length > 0 ? (
-            <ProductList products={productsDisplayed} />
-          ) : (
-            <h2>No products found. Please refine your search criteria.</h2>
-          )}
-        </div>
+        {toggleDisplay()}
         <DonateNow />
         <Footer />
       </main>
