@@ -6,18 +6,18 @@ import UserLocation from "./components/UserLocation";
 import { IoMdPin } from "react-icons/io";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
-import axios from 'axios';
-import product from "./components/Product";
-
-// import products from "./data/products";
+import axios from "axios";
 
 const App = () => {
   const BACKENDURL = "https://public-good-app.herokuapp.com/api/v1/product";
+  const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
 
   const [searchQuery, setSearchQuery] = useState("");
   // using hardcoded data state
   const [productsDisplayed, setDisplayedProducts] = useState([]);
   const [address, setAddress] = useState("");
+  const [radius, setRadius] = useState(1);
+  const [zipcode, setZipCode] = useState(98109);
 
   const filter = (s) => {
     // search string
@@ -27,24 +27,25 @@ const App = () => {
     if (keyword !== "") {
       let products = [];
       // const axios = require('axios').default;
-      const params = {"searchStr": keyword};
+      const params = { searchStr: keyword };
       // connect to backend and call getmapping to return list of product objects
-      axios.get(BACKENDURL, {"params": params})
-          .then(function (response) {
-            let productsData = response.data;
-            for (let productData of productsData) {
-              productData.buyURL = "https://www.walmart.com" + productData.buyURL;
-              let imageURL = productData["imageURL"];
-              delete productData.imageURL;
-              productData.image = imageURL;
-              console.log(productData);
-              products.push(productData);
-              console.log("!");
-            }
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+      axios
+        .get(BACKENDURL, { params: params })
+        .then(function (response) {
+          let productsData = response.data;
+          for (let productData of productsData) {
+            productData.buyURL = "https://www.walmart.com" + productData.buyURL;
+            let imageURL = productData["imageURL"];
+            delete productData.imageURL;
+            productData.image = imageURL;
+            console.log(productData);
+            products.push(productData);
+            console.log("!");
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       console.log("PRODUCTS: " + products);
       setDisplayedProducts(products);
     }
@@ -58,6 +59,18 @@ const App = () => {
     setAddress(updatedAddress);
   };
 
+  const updateZipCode = (e) => {
+    const updatedZipCode = e.target.value;
+
+    setZipCode(updatedZipCode);
+  };
+
+  const updateRadius = (e) => {
+    const updatedRadius = e.target.value;
+
+    setRadius(updatedRadius);
+  };
+
   const userLocation = UserLocation();
   const [locationInput, setLocationInput] = useState("");
   const [loadedLocation, setLoadedLocation] = useState(false);
@@ -68,20 +81,64 @@ const App = () => {
         "Access to user location was denied. Please manually update your address."
       );
     }
-    // console.log(`setlocation: ${userLocation.coordinates.lat}`);
 
     setLocationInput(
       `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
     );
     setLoadedLocation(true);
   };
-  // console.log(`render: ${userLocation.coordinates.lat}`);
+
+  const onFormSubmit = (event) => {
+    // call the zipcode API with the radius and zipcode
+    event.preventDefault();
+    console.log("submitting form");
+    if (userLocation.coordinates === "Access to user location was denied") {
+      onFormSubmitZipCode(event);
+    } else {
+      onFormSubmitLatLon(event);
+      onFormSubmitZipCode(event);
+    }
+  };
+
+  const onFormSubmitZipCode = (event) => {
+    // call the zipcode API with the radius and zipcode
+    event.preventDefault();
+    console.log("submitting form");
+    axios
+      .get(
+        `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error!", error);
+      });
+  };
+
+  const onFormSubmitLatLon = (event) => {
+    // call the zipcode API with the radius and zipcode
+    event.preventDefault();
+    console.log("submitting form");
+    axios
+      .get(
+        `https://www.zipcodeapi.com/rest/${API_KEY}/radius-sql.json/${userLocation.coordinates.lat}/${userLocation.coordinates.long}/degrees/${radius}/mile/lat/lng/1`
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("error!", error);
+      });
+  };
+
   return (
     <div className="App">
       <Navbar />
-      <nav className="search-container">
-        <div className="user-input">
+      <div className="user-input">
+        <form onSubmit={onFormSubmit}>
           <div className="product-search-container">
+            <label>Product Search</label>
             <input
               type="search"
               label="product-search"
@@ -90,35 +147,42 @@ const App = () => {
               className="search-input"
               placeholder="Search Products"
               results={5}
-              autoSave
             />
           </div>
           <div className="arrow" />
           {locationError}
           <div className="location-container">
+            <label>Zipcode</label>
             <input
               type="search"
               name="address-search"
               label="address-search"
-              value={
-                locationInput && loadedLocation && !locationError
-                  ? locationInput
-                  : address
-              }
+              value={zipcode}
               className="address-input"
               placeholder="ZipCode"
-              onChange={updateAddress}
+              onChange={updateZipCode}
             />
-            <button
-              className="dropPin"
-              disabled={!userLocation.loaded}
-              onClick={setLocation}
-            >
-              <IoMdPin />
-            </button>
           </div>
-        </div>
-      </nav>
+          <button
+            className="dropPin"
+            disabled={!userLocation.loaded}
+            onClick={setLocation}
+          >
+            <IoMdPin />
+          </button>
+          <div className="radius-container">
+            <input
+              type="number"
+              name="radius"
+              label="radius"
+              onChange={updateRadius}
+              value={radius}
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
       <main className="App-content">
         <div className="products-displayed">
           {productsDisplayed && productsDisplayed.length > 0 ? (
