@@ -25,7 +25,7 @@
 
 .search-container {
   background-color: black;
-  height: 20vh;
+  height: 25vh;
   color: white;
   /* padding: 10px; */
 }
@@ -38,7 +38,7 @@
                         "address arrow";
   gap: 10px;
   grid-template-columns: 400px 1fr;
-  grid-template-rows: 10vh 1fr;
+  grid-template-rows: 13vh 1fr;
   position: absolute;
   z-index: 1;
 }
@@ -92,7 +92,7 @@
   display: block;
   transform: rotate(45deg);
   margin-top: 62.5px;
-  margin-left: 20px;
+  margin-left: 50px;
   padding: 5px;
 }
 
@@ -100,6 +100,7 @@
   grid-area: address;
   height: 4vh;
   width: 19.75vw;
+  margin-top: -20px;
   margin-left: -19.75px;
   padding: 0px;
   color: rgb(99, 96, 96);
@@ -111,6 +112,7 @@
   font-size: calc(5px + 1vmin);
   z-index: 1;
 }
+
 
 button img {
   grid-area: address;
@@ -124,6 +126,34 @@ button img {
   /* border: none; */
   /* outline: none; */
 }
+
+.radius-input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  width: 70px;
+}
+
+.radius-container {
+  /* display: flex; */
+  padding: 10px;
+  align-content: center;
+  justify-items: auto;
+  padding-bottom: 10px;
+}
+
+/* .radius-input {
+  vertical-align: middle;
+  width: 50px;
+  color: rgb(99, 96, 96);
+  background-color: #DDD;
+  border-radius: 50px;
+  height: 4vh;
+  z-index: 2;
+  margin-left: 8vh;
+  padding: 0px;
+
+} */
 
 .address-input {
   border-right: none;
@@ -139,7 +169,7 @@ button img {
     position: absolute;
     /* top: -35%;
     margin-left: -20px; Tori*/
-    top: -43%;
+    top: -27.5%;
     margin-left: -300px;
     margin-top: 13px;
     color: black;

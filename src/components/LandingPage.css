@@ -1,0 +1,279 @@
+/* .h3-fixed {
+    position: fixed;
+    right: 0px;
+    padding: 10px;
+    background-color: transparent;
+    color: #FFF200;
+    z-index: 100;
+} */
+
+/* .dropdown-fixed {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+} */
+/* 
+.dropdown-bar {
+    z-index: 100;
+    position: sticky;
+    top: 0;
+} */
+
+/* .dropdown-bar.d-flex {
+    padding-bottom: 10px;
+    padding-left: 0px;
+    background: rgba(255,255,255,0.5)
+} */
+
+/* .h3-bar {
+    position: absolute;
+    z-index: 100;
+    right: 0px;
+    padding: 10px;
+} */
+
+/*.bi-list {
+    mix-blend-mode: difference;
+}*/
+
+
+/* .carousel > svg {
+    position: relative;
+    top: -100;
+    width: 100%;
+    height: 200px;
+} */
+
+
+.btn-md {
+    margin: 10px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.btn-md:hover {
+    transform: scale(1.3);
+}
+
+.btn-light {
+    opacity: 0.5;
+}
+
+.btn-outline-dark {
+    background-color: white;
+    opacity: 0.7;
+}
+
+/* .display-5 {
+    margin-top: 50px;
+} */
+
+.container-fluid > .text-center > .col-xs-12 > svg {
+    width: 10%;
+    height: auto;
+    margin-bottom: 15px;
+    margin-top: 45px;
+}
+/* 
+.landing-page {
+    width: 10%;
+    height: auto;
+    margin-bottom: 15px;
+    margin-top: 45px;
+} */
+
+
+/* .quick-des > .row {
+    margin: 23px;
+} */
+
+/* .quick-des > .row > .col-sm {
+    height: 47%;
+    width: 47%;
+    padding: 17px;
+} */
+
+
+.quick-des > .row > .col-sm > h7 > ul > .text-muted {
+    font-size: 13px;
+}
+
+a, a:hover, a:visited, a:active {
+    color: inherit;
+    text-decoration: none;
+}
+
+.btn-outline-warning:hover {
+    color: white;
+}
+
+/* .homepage {
+    position: relative;
+    margin-top: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: lightgray;
+    opacity: 0.5;
+} */
+
+/* .story-row {
+    padding-left: 44px;
+    padding-right: 44px;
+}
+
+.story-card {
+    padding: 30px;
+    overflow-y: scroll;
+    height: 1000px;
+}
+
+.story-img {
+    padding: 0px;
+    overflow-y: hidden;
+}
+
+.story-img-item {
+    max-width: 100%;
+    max-height: auto;
+} */
+
+/* .other {
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: lightgray;
+    opacity: 0.5;
+} */
+
+/* .footer:hover {
+    opacity: 0.8;
+}
+
+.footer > .row > .col-sm > svg {
+    margin: 17px;
+}
+
+.footer > .row > .col-sm > svg:hover {
+    margin: 17px;
+    transform: scale(1.3);
+    color: black;
+} */
+
+/* rect {
+    color: transparent;
+}
+
+circle {
+    color: transparent;
+}
+ */
+/* 
+.container-fluid {
+    padding: 0px;
+    margin: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 20px;
+    padding-left: 30px;
+
+} */
+/* 
+.container-fluid > .row {
+    margin: 0px;
+} */
+
+/* .container-fluid.card > .row > .col-sm-4 {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.container-fluid.card > .row > .col-sm-4 > body {
+    padding-top: 20px;
+    padding-left: 30px;
+} */
+/* 
+.contact-page {
+    width: 100vw;
+    height: 100%;
+}
+
+.contact-row {
+    height: 100%;
+}
+
+#contact-background {
+    padding: 0px;
+}
+
+#contact-background > img {
+    width: 100%;
+    position: relative;
+    right: 0px;
+}
+
+#contact-form {
+    position: relative;
+    padding: 100px 75px 50px 75px;
+} */
+
+.row-one {
+    display: flex;
+    justify-content: center;
+    /* padding: 10px; */
+}
+
+.row-two {
+    display: flex;
+    justify-content: center;
+    /* margin-left: 50%; */
+    position: relative;
+    /* top: -100; */
+    width: 100%;
+    height: 250px;
+    margin: 0px;
+    margin-top: 100px;
+}
+
+.row-three {
+    /* padding: -15px; */
+    margin-top: 2px;
+    margin-bottom: 20px;
+    /* float:inline-end; */
+
+}
+.column {
+    flex: 25%;
+}
+
+.landing-page {
+    width: 100%;
+    font-size: 100px;
+    margin-bottom: -20px;
+    /* margin-left: 10px; */
+}
+
+/* h6 .one {
+    padding: 0px;
+    margin: -30px;
+} */
+
+/* h6 .two {
+    padding: 0px;
+    margin: -10px;
+} */
+
+.landing-page-text {
+    font-size: 17px;
+    /* top: -100; */
+    /* width: 100%; */
+    /* height: 250px; */
+    margin-top: 50px;
+}
+
+.aboutUs {
+    padding: 0px;
+    margin-left: -5px;
+    padding-bottom: 25px;
+    width: 100%;
+    border-bottom: solid 2px #DDD;
+}
