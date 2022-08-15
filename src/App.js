@@ -19,7 +19,7 @@ const App = () => {
   const [productsDisplayed, setDisplayedProducts] = useState(products);
   const [address, setAddress] = useState("");
   // const [radius, setRadius] = useState(1);
-  const [zipcode, setZipCode] = useState(98109);
+  const [zipcode, setZipCode] = useState(null);
   const [display, setDisplay] = useState(null);
 
   const toggleDisplay = () => {
@@ -121,7 +121,6 @@ const App = () => {
     }
 
     setLocationInput(
-      console.log("coordinates should be here")
       `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
     );
     setLoadedLocation(true);
@@ -176,41 +175,52 @@ const App = () => {
       });
   };
 
+  const updateLocationValue = () => {
+    if (locationInput && loadedLocation && !locationError) {
+      setLocationInput("");
+      return updateZipCode;
+    }
+  };
+
   return (
     <div className="App">
       <Navbar />
-        <nav className="search-container">
-          <form onSubmit={onFormSubmit}>
-            <div className="user-input">
-              <div className="product-search-container">
-                <input
-                  type="search"
-                  value={searchQuery}
-                  onChange={filter}
-                  className="search-input"
-                  placeholder="Search Products"
-                />
-              </div>
-              <button className="arrow" type="submit"></button>
-              <div className="location-container">
-                <input
-                  type="search"
-                  name="address-search"
-                  value={zipcode}
-                  className="address-input"
-                  placeholder="ZipCode"
-                  onChange={updateZipCode}
-                />
-                <button
-                  className="dropPin"
-                  disabled={!userLocation.loaded}
-                  onClick={setLocation}
-                >
-                  <IoMdPin />
-                </button>
-              </div>
-              <div className="error-message-container">
-                {/* <input
+      <nav className="search-container">
+        <form onSubmit={onFormSubmit}>
+          <div className="user-input">
+            <div className="product-search-container">
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={filter}
+                className="search-input"
+                placeholder="Search Products"
+              />
+            </div>
+            <button className="arrow" type="submit"></button>
+            <div className="location-container">
+              <input
+                type="search"
+                name="address-search"
+                value={
+                  locationInput && loadedLocation && !locationError
+                    ? locationInput
+                    : zipcode
+                }
+                className="address-input"
+                placeholder="ZipCode"
+                onChange={updateLocationValue}
+              />
+              <button
+                className="dropPin"
+                disabled={!userLocation.loaded}
+                onClick={setLocation}
+              >
+                <IoMdPin />
+              </button>
+            </div>
+            <div className="error-message-container">
+              {/* <input
                   className="radius-input"
                   type="number"
                   name="radius"
@@ -218,9 +228,9 @@ const App = () => {
                   onChange={updateRadius}
                   value={radius}
                 /> */}
-                {/* <button type="submit">Submit</button> */}
-                {locationError}
-              </div>
+              {/* <button type="submit">Submit</button> */}
+              {locationError}
+            </div>
           </div>
         </form>
       </nav>
