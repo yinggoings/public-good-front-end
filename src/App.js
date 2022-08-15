@@ -8,15 +8,15 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import axios from "axios";
 import LandingPage from "./components/LandingPage";
+import products from "./data/products";
 
 const App = () => {
-  
   const BACKENDURL = "https://public-good-app.herokuapp.com/api/v1/product";
   const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
 
   const [searchQuery, setSearchQuery] = useState("");
   // using hardcoded data state
-  const [productsDisplayed, setDisplayedProducts] = useState([]);
+  const [productsDisplayed, setDisplayedProducts] = useState(products);
   const [address, setAddress] = useState("");
   const [radius, setRadius] = useState(1);
   const [zipcode, setZipCode] = useState(98109);
@@ -43,37 +43,50 @@ const App = () => {
   const changeDisplay = () => {
     setDisplay(true);
   };
+  // const filter = (s) => {
+  //   // search string
+
+  //   const keyword = s.target.value;
+
+  //   if (keyword !== "") {
+  //     let products = [];
+  //     // const axios = require('axios').default;
+  //     const params = { searchStr: keyword };
+  //     // connect to backend and call getmapping to return list of product objects
+  //     axios
+  //       .get(BACKENDURL, { params: params })
+  //       .then(function (response) {
+  //         let productsData = response.data;
+  //         for (let productData of productsData) {
+  //           productData.buyURL = "https://www.walmart.com" + productData.buyURL;
+  //           let imageURL = productData["imageURL"];
+  //           delete productData.imageURL;
+  //           productData.image = imageURL;
+  //           console.log(productData);
+  //           products.push(productData);
+  //           console.log("!");
+  //         }
+  //       })
+  //       .catch(function (error) {
+  //         console.log(error);
+  //       });
+  //     console.log("PRODUCTS: " + products);
+  //     setDisplayedProducts(products);
+  //   }
+
+  //   setSearchQuery(keyword);
+  // };
+
   const filter = (s) => {
-    // search string
-
     const keyword = s.target.value;
-
     if (keyword !== "") {
-      let products = [];
-      // const axios = require('axios').default;
-      const params = { searchStr: keyword };
-      // connect to backend and call getmapping to return list of product objects
-      axios
-        .get(BACKENDURL, { params: params })
-        .then(function (response) {
-          let productsData = response.data;
-          for (let productData of productsData) {
-            productData.buyURL = "https://www.walmart.com" + productData.buyURL;
-            let imageURL = productData["imageURL"];
-            delete productData.imageURL;
-            productData.image = imageURL;
-            console.log(productData);
-            products.push(productData);
-            console.log("!");
-          }
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-      console.log("PRODUCTS: " + products);
+      const result = products.filter((product) => {
+        return product.name.toLowerCase().startsWith(keyword.toLowerCase());
+      });
+      setDisplayedProducts(result);
+    } else {
       setDisplayedProducts(products);
     }
-
     setSearchQuery(keyword);
   };
 
@@ -130,9 +143,9 @@ const App = () => {
     event.preventDefault();
     console.log("submitting form");
     axios
-      .get(
+      .get
       //   `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
-      )
+      ()
       .then((response) => {
         changeDisplay();
         console.log(response.data);
@@ -148,9 +161,9 @@ const App = () => {
     event.preventDefault();
     console.log("submitting form");
     axios
-      .get(
+      .get
       //   `https://www.zipcodeapi.com/rest/${API_KEY}/radius-sql.json/${userLocation.coordinates.lat}/${userLocation.coordinates.long}/degrees/${radius}/mile/lat/lng/1`
-      )
+      ()
       .then((response) => {
         changeDisplay();
         console.log(response.data);
@@ -164,58 +177,58 @@ const App = () => {
   return (
     <div className="App">
       <Navbar />
-        <nav className="search-container">
-          <form onSubmit={onFormSubmit}>
-            <div className="user-input">
-              <div className="product-search-container">
-                {/* <label>Product Search</label> */}
-                <input
-                  type="search"
-                  // label="product-search"
-                  value={searchQuery}
-                  onChange={filter}
-                  className="search-input"
-                  placeholder="Search Products"
-                  // results={5}
-                  // autoSave
-                />
-              </div>
-              <div className="arrow" />
-              <div className="location-container">
-                {/* <label>Zipcode</label> */}
-                <input
-                  type="search"
-                  name="address-search"
-                  // label="address-search"
-                  value={zipcode}
-                  className="address-input"
-                  placeholder="ZipCode"
-                  onChange={updateZipCode}
-                />
-                {/* </div> */}
-                <button
-                  className="dropPin"
-                  disabled={!userLocation.loaded}
-                  onClick={setLocation}
-                >
-                  <IoMdPin />
-                </button>
-                <div className="radius-container">
-                  <input
-                    className="radius-input"
-                    type="number"
-                    name="radius"
-                    label="radius"
-                    onChange={updateRadius}
-                    value={radius}
-                  />
-                  <button type="submit">Submit</button>
-                </div>
-                {locationError}
-              </div>
+      <nav className="search-container">
+        <form onSubmit={onFormSubmit}>
+          <div className="user-input">
+            <div className="product-search-container">
+              {/* <label>Product Search</label> */}
+              <input
+                type="search"
+                // label="product-search"
+                value={searchQuery}
+                onChange={filter}
+                className="search-input"
+                placeholder="Search Products"
+                // results={5}
+                // autoSave
+              />
             </div>
-          </form>
-        </nav>
+            <div className="arrow" />
+            <div className="location-container">
+              {/* <label>Zipcode</label> */}
+              <input
+                type="search"
+                name="address-search"
+                // label="address-search"
+                value={zipcode}
+                className="address-input"
+                placeholder="ZipCode"
+                onChange={updateZipCode}
+              />
+              {/* </div> */}
+              <button
+                className="dropPin"
+                disabled={!userLocation.loaded}
+                onClick={setLocation}
+              >
+                <IoMdPin />
+              </button>
+              <div className="radius-container">
+                <input
+                  className="radius-input"
+                  type="number"
+                  name="radius"
+                  label="radius"
+                  onChange={updateRadius}
+                  value={radius}
+                />
+                <button type="submit">Submit</button>
+              </div>
+              {locationError}
+            </div>
+          </div>
+        </form>
+      </nav>
       <main className="App-content">
         {toggleDisplay()}
         <DonateNow />
