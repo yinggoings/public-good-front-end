@@ -98,6 +98,7 @@ const App = () => {
   };
 
   const updateZipCode = (e) => {
+    setLocationInput("");
     const updatedZipCode = e.target.value;
 
     setZipCode(updatedZipCode);
@@ -208,7 +209,7 @@ const App = () => {
                     : zipcode
                 }
                 className="address-input"
-                placeholder="ZipCode"
+                placeholder="ZIP Code"
                 onChange={updateLocationValue}
               />
               <button
