@@ -1,7 +1,7 @@
 import "./App.css";
 import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
-import DonateNow from "./components/DonateNow";
+// import DonateNow from "./components/DonateNow";
 import UserLocation from "./components/UserLocation";
 import { IoMdPin } from "react-icons/io";
 import { useState } from "react";
@@ -18,7 +18,7 @@ const App = () => {
   // using hardcoded data state
   const [productsDisplayed, setDisplayedProducts] = useState([]);
   const [address, setAddress] = useState("");
-  const [radius, setRadius] = useState(1);
+  // const [radius, setRadius] = useState(1);
   const [zipcode, setZipCode] = useState(98109);
   const [display, setDisplay] = useState(null);
 
@@ -43,6 +43,7 @@ const App = () => {
   const changeDisplay = () => {
     setDisplay(true);
   };
+  
   const filter = (s) => {
     // search string
 
@@ -89,11 +90,11 @@ const App = () => {
     setZipCode(updatedZipCode);
   };
 
-  const updateRadius = (e) => {
-    const updatedRadius = e.target.value;
+  // const updateRadius = (e) => {
+  //   const updatedRadius = e.target.value;
 
-    setRadius(updatedRadius);
-  };
+  //   setRadius(updatedRadius);
+  // };
 
   const userLocation = UserLocation();
   const [locationInput, setLocationInput] = useState("");
@@ -107,6 +108,7 @@ const App = () => {
     }
 
     setLocationInput(
+      console.log("coordinates should be here")
       `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
     );
     setLoadedLocation(true);
@@ -168,31 +170,24 @@ const App = () => {
           <form onSubmit={onFormSubmit}>
             <div className="user-input">
               <div className="product-search-container">
-                {/* <label>Product Search</label> */}
                 <input
                   type="search"
-                  // label="product-search"
                   value={searchQuery}
                   onChange={filter}
                   className="search-input"
                   placeholder="Search Products"
-                  // results={5}
-                  // autoSave
                 />
               </div>
-              <div className="arrow" />
+              <button className="arrow" type="submit"></button>
               <div className="location-container">
-                {/* <label>Zipcode</label> */}
                 <input
                   type="search"
                   name="address-search"
-                  // label="address-search"
                   value={zipcode}
                   className="address-input"
                   placeholder="ZipCode"
                   onChange={updateZipCode}
                 />
-                {/* </div> */}
                 <button
                   className="dropPin"
                   disabled={!userLocation.loaded}
@@ -200,17 +195,17 @@ const App = () => {
                 >
                   <IoMdPin />
                 </button>
-                <div className="radius-container">
-                  <input
-                    className="radius-input"
-                    type="number"
-                    name="radius"
-                    label="radius"
-                    onChange={updateRadius}
-                    value={radius}
-                  />
-                  <button type="submit">Submit</button>
-                </div>
+              </div>
+              <div className="error-message-container">
+                {/* <input
+                  className="radius-input"
+                  type="number"
+                  name="radius"
+                  label="radius"
+                  onChange={updateRadius}
+                  value={radius}
+                /> */}
+                {/* <button type="submit">Submit</button> */}
                 {locationError}
               </div>
             </div>
@@ -218,9 +213,10 @@ const App = () => {
         </nav>
       <main className="App-content">
         {toggleDisplay()}
-        <DonateNow />
+        {/* <DonateNow /> */}
         <Footer />
       </main>
+
     </div>
   );
 };

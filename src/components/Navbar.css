@@ -15,7 +15,7 @@
 .brand-name {
     text-decoration: none;
     color: black;
-    font-size: calc(18px + 2vmin);
+    font-size: 35px;
     margin-left: 1rem;
 }
 
@@ -26,11 +26,13 @@
 .navigation-menu ul {
     display: flex;
     padding: 0;
+    
 }
 
 .navigation-menu li {
     list-style-type: none;
     margin: 0 1rem;
+    
 }
 
 .navigation-menu li a {
@@ -83,10 +85,12 @@
         /* height: calc(100vh - 77px); */
         background-color: white;
         border-top: 1px solid black;
+        border-bottom: 1px solid black;
     }
     .navigation-menu li {
         text-align: center;
         margin: 0;
+        border-top: 1px solid black;
     }
     .navigation-menu li a {
         color: black;

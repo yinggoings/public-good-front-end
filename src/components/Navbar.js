@@ -25,13 +25,10 @@ const Navbar = () => {
       >
         <ul>
           <li>
-            <a href="/register">REGISTER.</a>
+            <a href="/about">ABOUT.</a>
           </li>
           <li>
-            <a href="/login">LOGIN.</a>
-          </li>
-          <li>
-            <a href="/contact-us">CONTACT US.</a>
+            <a href="mailto:public.good.app@gmail.com">CONTACT.</a>
           </li>
         </ul>
       </div>
