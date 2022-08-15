@@ -3,15 +3,24 @@ import "./Product.css";
 import PropTypes from "prop-types";
 import ProductImage from "./ProductImage";
 
-const Product = ({ price, available, retailer, id, image, brand, name }) => {
+const Product = ({
+  price,
+  available,
+  retailer,
+  id,
+  image,
+  brand,
+  name,
+  buyURL,
+}) => {
   const determineAvailability = () => {
     let availabilityInfo;
 
     if (available) {
-      availabilityInfo = `In stock at ${retailer}`;
+      availabilityInfo = "In stock at ";
       return availabilityInfo;
     } else {
-      availabilityInfo = "Sold out";
+      availabilityInfo = `Sold out at ${retailer}`;
       return availabilityInfo;
     }
   };
@@ -37,6 +46,14 @@ const Product = ({ price, available, retailer, id, image, brand, name }) => {
             <p id="product-price product-price-container">{`$${price}`}</p>
             <p id="product-quantity product-quantity-container">
               {determineAvailability()}
+              {available ? (
+                <a href={buyURL} target="_blank" rel="noreferrer">
+                  {retailer}
+                </a>
+              ) : (
+                ""
+              )}
+
               {/* {props.quantity === null
                 ? "Sold out"
                 : `${props.quantity} units available at ${props.retailer}`} */}
@@ -58,6 +75,7 @@ Product.propTypes = {
   available: PropTypes.bool.isRequired,
   image: PropTypes.string.isRequired,
   retailer: PropTypes.string.isRequired,
+  buyURL: PropTypes.string,
 };
 
 export default Product;

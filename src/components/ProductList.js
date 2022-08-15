@@ -14,6 +14,7 @@ const ProductList = (props) => {
           available={product.available}
           image={product.image}
           retailer={product.retailer}
+          buyURL={product.buyURL}
         />
       );
     });
@@ -49,6 +50,7 @@ ProductList.propTypes = {
       available: PropTypes.bool.isRequired,
       image: PropTypes.string.isRequired,
       retailer: PropTypes.string.isRequired,
+      buyURL: PropTypes.string,
     })
   ),
 };
