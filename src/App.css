@@ -177,3 +177,7 @@ input[type=search]:focus + .dropPin {
   z-index: 1;
   background-color: black;
 }
+
+button:disabled { 
+  cursor: not-allowed;
+}

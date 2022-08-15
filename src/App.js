@@ -78,16 +78,18 @@ const App = () => {
   //   setSearchQuery(keyword);
   // };
 
+  // filters products - hardcoded data
+
   const filter = (s) => {
     const keyword = s.target.value;
-    if (keyword !== "") {
-      const result = products.filter((product) => {
-        return product.name.toLowerCase().startsWith(keyword.toLowerCase());
-      });
-      setDisplayedProducts(result);
-    } else {
-      setDisplayedProducts(products);
-    }
+    // if (keyword !== "") {
+    //   const result = products.filter((product) => {
+    //     return product.name.toLowerCase().startsWith(keyword.toLowerCase());
+    //   });
+    // setDisplayedProducts(keyword);
+    // } else {
+    //   setDisplayedProducts(products);
+    // }
     setSearchQuery(keyword);
   };
 
@@ -196,9 +198,17 @@ const App = () => {
                 onChange={filter}
                 className="search-input"
                 placeholder="Search Products"
+                required={true}
               />
             </div>
-            <button className="arrow" type="submit"></button>
+            <button
+              disabled={
+                (!searchQuery && (!zipcode || !locationInput)) ||
+                (searchQuery && (!zipcode || !locationInput))
+              }
+              className="arrow"
+              type="submit"
+            ></button>
             <div className="location-container">
               <input
                 type="search"
@@ -211,6 +221,7 @@ const App = () => {
                 className="address-input"
                 placeholder="ZIP Code"
                 onChange={updateLocationValue}
+                required={true}
               />
               <button
                 className="dropPin"
@@ -220,18 +231,7 @@ const App = () => {
                 <IoMdPin />
               </button>
             </div>
-            <div className="error-message-container">
-              {/* <input
-                  className="radius-input"
-                  type="number"
-                  name="radius"
-                  label="radius"
-                  onChange={updateRadius}
-                  value={radius}
-                /> */}
-              {/* <button type="submit">Submit</button> */}
-              {locationError}
-            </div>
+            <div className="error-message-container">{locationError}</div>
           </div>
         </form>
       </nav>
