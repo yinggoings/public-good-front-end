@@ -5,25 +5,22 @@ import ProductImage from "./ProductImage";
 
 const Product = ({
   price,
-  availability,
+  available,
   retailer,
   id,
   image,
   brand,
-  quantity,
   name,
+  buyURL,
 }) => {
   const determineAvailability = () => {
     let availabilityInfo;
 
-    if (quantity > 0) {
-      availabilityInfo = `${quantity} available at ${retailer}`;
+    if (available) {
+      availabilityInfo = "In stock at ";
       return availabilityInfo;
-    } else if ((quantity === null || quantity === 0) && !availability) {
-      availabilityInfo = "Sold out";
-      return availabilityInfo;
-    } else if (quantity === null && availability) {
-      availabilityInfo = `In stock at ${retailer}`;
+    } else {
+      availabilityInfo = `Sold out at ${retailer}`;
       return availabilityInfo;
     }
   };
@@ -49,6 +46,14 @@ const Product = ({
             <p id="product-price product-price-container">{`$${price}`}</p>
             <p id="product-quantity product-quantity-container">
               {determineAvailability()}
+              {available ? (
+                <a href={buyURL} target="_blank" rel="noreferrer">
+                  {retailer}
+                </a>
+              ) : (
+                ""
+              )}
+
               {/* {props.quantity === null
                 ? "Sold out"
                 : `${props.quantity} units available at ${props.retailer}`} */}
@@ -67,10 +72,10 @@ Product.propTypes = {
   name: PropTypes.string.isRequired,
   brand: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  availability: PropTypes.bool.isRequired,
-  quantity: PropTypes.number,
+  available: PropTypes.bool.isRequired,
   image: PropTypes.string.isRequired,
   retailer: PropTypes.string.isRequired,
+  buyURL: PropTypes.string,
 };
 
 export default Product;

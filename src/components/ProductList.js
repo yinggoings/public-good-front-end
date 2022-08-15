@@ -11,10 +11,10 @@ const ProductList = (props) => {
           name={product.name}
           brand={product.brand}
           price={product.price}
-          availability={product.availability}
-          quantity={product.quantity}
+          available={product.available}
           image={product.image}
           retailer={product.retailer}
+          buyURL={product.buyURL}
         />
       );
     });
@@ -47,10 +47,10 @@ ProductList.propTypes = {
       name: PropTypes.string.isRequired,
       brand: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
-      availability: PropTypes.bool.isRequired,
-      quantity: PropTypes.number,
+      available: PropTypes.bool.isRequired,
       image: PropTypes.string.isRequired,
       retailer: PropTypes.string.isRequired,
+      buyURL: PropTypes.string,
     })
   ),
 };
