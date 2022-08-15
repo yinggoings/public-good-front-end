@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Public Good
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Public Good is an app that is meant to be used to counteract issues relating to supply chain, price gouging, scarcity, and discriminatory laws occurring on a local and state level. Ideally, the app will focus on goods that may mean the difference between life and death (or the quality of life) of people in vulnerable populations. 
 
-In the project directory, you can run:
 
-### `yarn start`
+## Project Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- The user can search for products in limited supply, such as baby formula, at nearby WalMart and Target stores
+- The user can see which products are in stock and at which stores
+- The user can click on a link to be redirected to the store where they can purchase the product
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `yarn test`
+## Future Enhancements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The user can login and save items, write on the community forum, etc.
+- The registered users can read and write on a community forum 
+- The user can see a map of the store locations 
+- The user can filter by in stock items, brand, and store
+- The user can sort products by price 
+- The user can set the store search radius
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used & Why We Chose Them
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Frontend: React.js
+- Backend: Spring Boot Java 
+- Web Scraping: Walmart.com and Target.com
+  
+We had to rely on web scraping as we were not able to access the Walmart and Target APIs. As for our choice of backend technology, we wanted to learn a statically typed language. We also wanted to solidify our React skills. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Project Challenges and Learning Goals
+### Challenges
+- Accessing APIs and retrieving necessary data 
+- Web scraping in Java — many resources/examples are based on Python
+- Deploying 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Learnings
+- Java, Spring Boot, Gradle, IntelliJ, Jira
+- Project management: planning a larger project 
+- Working in a team
+  - Non-Technical: communication, adaptability
+  - Pair programming
+  - Proper git hygiene, e.g. pull requests, merge conflicts, branches, etc.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setting Up the Project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If you’d like to make changes to the project, please fork it. Otherwise you may clone it. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+cd into the folder where you’d like to clone the project: 
 
-## Learn More
+```shell=bash
+  git clone https://github.com/yinggoings/public-good-front-end.git 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  yarn install 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  yarn start
+```
+  
+## Credits 
 
-### Code Splitting
+Public Good is a capstone project for [Ada Developers Academy](https://adadevelopersacademy.org/) built by Ying Goings, Natascha Jenkins, Roshni Patel, and Tori Shade.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Resources Used: 
 
-### Analyzing the Bundle Size
+- Spring Boot Tutorial: https://www.youtube.com/watch?v=9SGDpanrc8U 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Target Web Scraping: https://www.youtube.com/watch?v=IArLJJFT6Nk 
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
