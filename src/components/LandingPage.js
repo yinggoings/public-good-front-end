@@ -1,7 +1,7 @@
 import "./LandingPage.css";
 import { MdOutlineTravelExplore } from "react-icons/md";
 import { IoMdPin } from "react-icons/io";
-import { SiYourtraveldottv } from "react-icons/si";
+// import { SiYourtraveldottv } from "react-icons/si";
 import { HiShoppingCart } from "react-icons/hi";
 import { BsSuitHeartFill } from "react-icons/bs";
 
@@ -13,11 +13,11 @@ const LandingPage = () => {
           <div class="header">
             <h4>public goods for public good.</h4>
           </div>
-          <div class="learn-about-us">
+          {/* <div class="learn-about-us">
             <button type="button" class="btn-outline-dark btn-about-us">
-              <a href="/about">about us</a>
-            </button>
-          </div>
+              <a href="/about">about us</a> */}
+          {/* </button>
+          </div> */}
         </div>
       </div>
       <div>
