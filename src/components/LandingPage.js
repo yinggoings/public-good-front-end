@@ -45,7 +45,7 @@ const LandingPage = () => {
               location
             </h6>
           </div>
-          <h6 className="landing-page-text">then</h6>
+          {/* <h6 className="landing-page-text">then</h6> */}
           {/* <div class="column">
                         <div className="landing-page">
                         <SiYourtraveldottv/>

@@ -9,10 +9,11 @@ import Navbar from "./components/Navbar";
 import axios from "axios";
 import LandingPage from "./components/LandingPage";
 import products from "./data/products";
+import { TARGET_STORES_MAP, WALMART_STORES_MAP } from "./data/locations";
 
 const App = () => {
   const BACKENDURL = "https://public-good-app.herokuapp.com/api/v1/product";
-  const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
+  // const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
 
   const [searchQuery, setSearchQuery] = useState("");
   // using hardcoded data state
@@ -44,54 +45,61 @@ const App = () => {
     setDisplay(true);
   };
 
-  // const filter = (s) => {
-  //   // search string
+  const filter = (s) => {
+    // search string
 
-  //   const keyword = s.target.value;
+    const keyword = s.target.value;
 
-  //   if (keyword !== "") {
-  //     let products = [];
-  //     // const axios = require('axios').default;
-  //     const params = { searchStr: keyword };
-  //     // connect to backend and call getmapping to return list of product objects
-  //     axios
-  //       .get(BACKENDURL, { params: params })
-  //       .then(function (response) {
-  //         let productsData = response.data;
-  //         for (let productData of productsData) {
-  //           productData.buyURL = "https://www.walmart.com" + productData.buyURL;
-  //           let imageURL = productData["imageURL"];
-  //           delete productData.imageURL;
-  //           productData.image = imageURL;
-  //           console.log(productData);
-  //           products.push(productData);
-  //           console.log("!");
-  //         }
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //     console.log("PRODUCTS: " + products);
-  //     setDisplayedProducts(products);
-  //   }
+    if (keyword !== "") {
+      let products = [];
+      // const axios = require('axios').default;
+      const stringZipcode = String(zipcode);
+      // const params = { searchStr: keyword, store_id: "4177" };
+      // connect to backend and call getmapping to return list of product objects
+      const params = {
+        searchStr: keyword,
+        zipCode: stringZipcode,
+        target: TARGET_STORES_MAP[stringZipcode],
+        walmart: WALMART_STORES_MAP[stringZipcode],
+      };
+      axios
+        .get(BACKENDURL, { params: params })
+        .then(function (response) {
+          let productsData = response.data;
+          for (let productData of productsData) {
+            productData.buyURL = "https://www.walmart.com" + productData.buyURL;
+            let imageURL = productData["imageURL"];
+            delete productData.imageURL;
+            productData.image = imageURL;
+            console.log(productData);
+            products.push(productData);
+            console.log("!");
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      console.log("PRODUCTS: " + products);
+      setDisplayedProducts(products);
+    }
 
-  //   setSearchQuery(keyword);
-  // };
+    setSearchQuery(keyword);
+  };
 
   // filters products - hardcoded data
 
-  const filter = (s) => {
-    const keyword = s.target.value;
-    // if (keyword !== "") {
-    //   const result = products.filter((product) => {
-    //     return product.name.toLowerCase().startsWith(keyword.toLowerCase());
-    //   });
-    // setDisplayedProducts(keyword);
-    // } else {
-    //   setDisplayedProducts(products);
-    // }
-    setSearchQuery(keyword);
-  };
+  // const filter = (s) => {
+  //   const keyword = s.target.value;
+  // if (keyword !== "") {
+  //   const result = products.filter((product) => {
+  //     return product.name.toLowerCase().startsWith(keyword.toLowerCase());
+  //   });
+  // setDisplayedProducts(keyword);
+  // } else {
+  //   setDisplayedProducts(products);
+  // }
+  //   setSearchQuery(keyword);
+  // };
 
   const updateAddress = (e) => {
     const updatedAddress = e.target.value;
@@ -184,7 +192,7 @@ const App = () => {
       return updateZipCode;
     }
   };
-
+  console.log("IT IS A", typeof zipcode);
   return (
     <div className="App">
       <Navbar />

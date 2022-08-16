@@ -1,85 +1,69 @@
-const storeLocation = [
-  {
-    storeId: 5571,
-    storeLong: -122.9377466,
-    storeLan: 47.0345622,
-    storeName: "Walgreens",
-    storeLongName: "Walgreens-Olympia,WA",
-    storeAddress: "1510 Cooper Point Rd Sw",
-    storeCity: "Olympia",
-    storeState: "WA",
-    storeZipCode: 98502,
-    storePhoneNumber: "(360) 570-8008",
-    storeDetails:
-      "1510 Cooper Point Rd Sw, Olympia,WA 98502|(360) 570-8008|Store #5571 [24 Hours ST/RX]",
-  },
-  {
-    storeId: 6590,
-    storeLong: -122.3211975,
-    storeLan: 47.6149788,
-    storeName: "Walgreens",
-    storeLongName: "Walgreens-Seattle,WA",
-    storeAddress: "1531 Broadway",
-    storeCity: "Seattle",
-    storeState: "WA",
-    storeZipCode: 98122,
-    storePhoneNumber: "(206) 204-0599",
-    storeDetails: "1531 Broadway, Seattle,WA 98122|(206) 204-0599|Store #6590",
-  },
-  {
-    storeId: 6194,
-    storeLong: -122.3386344,
-    storeLan: 47.6094534,
-    storeName: "Walgreens",
-    storeLongName: "Walgreens-Seattle,WA",
-    storeAddress: "222 Pike St",
-    storeCity: "Seattle",
-    storeState: "WA",
-    storeZipCode: 98101,
-    storePhoneNumber: "(206) 903-8392",
-    storeDetails: "222 Pike St, Seattle,WA 98101|(206) 903-8392|Store #6194",
-  },
-  {
-    storeId: 7034,
-    storeLong: -117.4104309,
-    storeLan: 47.6926956,
-    storeName: "Walgreens",
-    storeLongName: "Walgreens-Spokane,WA",
-    storeAddress: "12 E Empire Ave",
-    storeCity: "Spokane",
-    storeState: "WA",
-    storeZipCode: "99207",
-    storePhoneNumber: "(509) 325-0781",
-    storeDetails:
-      "12 E Empire Ave, Spokane,WA 99207|(509) 325-0781|Store #7034 [24 Hours ST/RX]",
-  },
-  {
-    storeId: 2205,
-    storeLong: -117.4212799,
-    storeLan: 47.8358612,
-    storeName: "Walgreens",
-    storeLongName: "Walgreens-Spokane,WA",
-    storeAddress: "12315 Hwy 395",
-    storeCity: "Spokane",
-    storeState: "WA",
-    storeZipCode: 99218,
-    storePhoneNumber: "(509) 466-7461",
-    storeDetails: "12315 Hwy 395, Spokane,WA 99218|(509) 466-7461|Store #2205",
-  },
-  {
-    storeId: 5817,
-    storeLong: -117.43766,
-    storeLan: 47.680488,
-    storeName: "Walgreens",
-    storeLongName: "Walgreens-Spokane,WA",
-    storeAddress: "1708 W Northwest Blvd",
-    storeCity: "Spokane",
-    storeState: "WA",
-    storeZipCode: "99205",
-    storePhoneNumber: "(509) 323-0309",
-    storeDetails:
-      "1708 W Northwest Blvd, Spokane,WA 99205|(509) 323-0309|Store #5817",
-  },
-];
+// prettier-ignore
 
-export default storeLocation;
+const TARGET_STORES_MAP = {
+  "98104": {
+    "store_id": "2786",
+    "zip_code": "98101",
+    "store_name": "Seattle Pike Plaza",
+    "closest_stores": "2786%2C3286%2C3327%2C0637%2C1284",
+    "state": "WA",
+    "latitude": "47.609",
+    "longitude": "-122.339"
+  },
+  "43017": {
+    "store_id": "2851",
+    "zip_code": "43065",
+    "store_name": "Powell",
+    "closest_stores": "2851%2C0666%2C1969%2C1978%2C1236",
+    "state": "OH",
+    "latitude": "40.142",
+    "longitude": "-83.094"
+  },
+  "60645": {
+    "store_id": "0927",
+    "zip_code": "60202",
+    "store_name": "Evanston",
+    "closest_stores": "0927%2C2079%2C3272%2C3283%2C3314",
+    "state": "IL",
+    "latitude": "42.019",
+    "longitude": "-87.706"
+  },
+  "27514": {
+    "store_id": "3241",
+    "zip_code": "27516",
+    "store_name": "UNC Franklin St",
+    "closest_stores": "3241%2C1372%2C2069%2C2784%2C1794",
+    "state": "NC",
+    "latitude": "35.911",
+    "longitude": "-79.057"
+  },
+  "10027":   {
+    "store_name": "Upper West Side 98th and Columbus",
+    "store_id": "3394",
+    "latitude": "40.794",
+    "longitude": "-73.965",
+    "state": "NY",
+    "zip_code": "10025",
+    "closest_stores": "3394%2C2475%2C1263%2C2380%2C3387",
+  }
+}
+
+const WALMART_STORES_MAP = {
+  98104: {
+    store_id: "3098",
+  },
+  43017: {
+    store_id: "2471",
+  },
+  60645: {
+    store_id: "4177",
+  },
+  27514: {
+    store_id: "2137",
+  },
+  10027: {
+    store_id: "3795",
+  },
+};
+
+export { TARGET_STORES_MAP, WALMART_STORES_MAP };
