@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { useState } from "react";
+// import PropTypes from "prop-types";
+// import { useState } from "react";
 import "./ProductSearch.css";
 import Product from "./Product";
 import { TiDelete } from "react-icons/ti";

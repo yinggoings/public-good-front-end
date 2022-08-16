@@ -25,7 +25,13 @@ const Navbar = () => {
       >
         <ul>
           <li>
-            <a href="/about">ABOUT.</a>
+            <a
+              href="https://github.com/yinggoings/public-good-front-end/blob/main/README.md"
+              target="blank"
+              rel="noreferrer"
+            >
+              ABOUT.
+            </a>
           </li>
           <li>
             <a href="mailto:public.good.app@gmail.com">CONTACT.</a>

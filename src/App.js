@@ -6,13 +6,13 @@ import UserLocation from "./components/UserLocation";
 import { IoMdPin } from "react-icons/io";
 import { useState } from "react";
 import Navbar from "./components/Navbar";
-import axios from "axios";
+// import axios from "axios";
 import LandingPage from "./components/LandingPage";
 import products from "./data/products";
 
 const App = () => {
   const BACKENDURL = "https://public-good-app.herokuapp.com/api/v1/product";
-  const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
+  // const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
 
   const [searchQuery, setSearchQuery] = useState("");
   // using hardcoded data state
@@ -133,49 +133,57 @@ const App = () => {
     // call the zipcode API with the radius and zipcode
     event.preventDefault();
     console.log("submitting form");
-    if (userLocation.coordinates === "Access to user location was denied") {
-      onFormSubmitZipCode(event);
-    } else {
-      onFormSubmitLatLon(event);
-      onFormSubmitZipCode(event);
-      changeDisplay();
-    }
+    // if (userLocation.coordinates === "Access to user location was denied") {
+    //   onFormSubmitZipCode(event);
+    // } else {
+    onFormSubmitLatLon(event);
+    onFormSubmitZipCode(event);
+    changeDisplay();
+    // }
   };
+
+  // const onFormSubmitZipCode = (event) => {
+  //   // call the zipcode API with the radius and zipcode
+  //   event.preventDefault();
+  //   console.log("submitting form");
+  //   axios
+  //     .get
+  //     //   `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
+  //     ()
+  //     .then((response) => {
+  //       changeDisplay();
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("error!", error);
+  //       changeDisplay();
+  //     });
+  // };
 
   const onFormSubmitZipCode = (event) => {
-    // call the zipcode API with the radius and zipcode
-    event.preventDefault();
-    console.log("submitting form");
-    axios
-      .get
-      //   `https://www.zipcodeapi.com/rest/${API_KEY}/radius.json/${zipcode}/${radius}/miles`
-      ()
-      .then((response) => {
-        changeDisplay();
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("error!", error);
-        changeDisplay();
-      });
+    changeDisplay();
   };
 
+  // const onFormSubmitLatLon = (event) => {
+  //   // call the zipcode API with the radius and zipcode
+  //   event.preventDefault();
+  //   console.log("submitting form");
+  //   axios
+  //     .get
+  //     //   `https://www.zipcodeapi.com/rest/${API_KEY}/radius-sql.json/${userLocation.coordinates.lat}/${userLocation.coordinates.long}/degrees/${radius}/mile/lat/lng/1`
+  //     ()
+  //     .then((response) => {
+  //       changeDisplay();
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("error!", error);
+  //       changeDisplay();
+  //     });
+  // };
+
   const onFormSubmitLatLon = (event) => {
-    // call the zipcode API with the radius and zipcode
-    event.preventDefault();
-    console.log("submitting form");
-    axios
-      .get
-      //   `https://www.zipcodeapi.com/rest/${API_KEY}/radius-sql.json/${userLocation.coordinates.lat}/${userLocation.coordinates.long}/degrees/${radius}/mile/lat/lng/1`
-      ()
-      .then((response) => {
-        changeDisplay();
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("error!", error);
-        changeDisplay();
-      });
+    changeDisplay();
   };
 
   const updateLocationValue = () => {

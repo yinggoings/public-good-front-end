@@ -1,7 +1,7 @@
 import "./LandingPage.css";
 import { MdOutlineTravelExplore } from "react-icons/md";
 import { IoMdPin } from "react-icons/io";
-import { SiYourtraveldottv } from "react-icons/si";
+// import { SiYourtraveldottv } from "react-icons/si";
 import { HiShoppingCart } from "react-icons/hi";
 import { BsSuitHeartFill } from "react-icons/bs";
 
@@ -13,11 +13,17 @@ const LandingPage = () => {
           <div class="header">
             <h4>public goods for public good.</h4>
           </div>
-          <div class="learn-about-us">
+          {/* <div class="learn-about-us">
             <button type="button" class="btn-outline-dark btn-about-us">
-              <a href="/about">about us</a>
+              <a
+                href="https://github.com/yinggoings/public-good-front-end/blob/main/README.md"
+                target="blank"
+                rel="noreferrer"
+              >
+                about us
+              </a>
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <div>
@@ -45,7 +51,7 @@ const LandingPage = () => {
               location
             </h6>
           </div>
-          <h6 className="landing-page-text">then</h6>
+          {/* <h6 className="landing-page-text">then</h6> */}
           {/* <div class="column">
                         <div className="landing-page">
                         <SiYourtraveldottv/>
