@@ -203,8 +203,8 @@ const App = () => {
             </div>
             <button
               disabled={
-                (!searchQuery && (!zipcode || !locationInput)) ||
-                (searchQuery && (!zipcode || !locationInput))
+                !searchQuery && (!zipcode || !locationInput)
+                // (searchQuery && (!zipcode || !locationInput))
               }
               className="arrow"
               type="submit"
