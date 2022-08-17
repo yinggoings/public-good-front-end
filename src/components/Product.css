@@ -84,3 +84,12 @@ ul li{
 ul li img:not(.footerImage):hover,ul li img:not(.footerImage) {
     border: none;
 }
+
+.linkRel {
+    font-weight: bold;
+    transition: scale 500ms;
+}
+
+a:hover .linkRel {
+    transform: scale(1.2);
+}

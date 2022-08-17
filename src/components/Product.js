@@ -50,7 +50,7 @@ const Product = ({
             <p id="product-quantity product-quantity-container">
               {determineAvailability()}
               {available ? (
-                <a href={buyURL} target="_blank" rel="noreferrer">
+                <a className="linkRel" href={buyURL} target="_blank" rel="noreferrer">
                   {retailer}
                 </a>
               ) : (
