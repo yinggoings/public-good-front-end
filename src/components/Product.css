@@ -43,11 +43,15 @@ img:not(.footerImage) {
 }
 
 .product-name-container {
-   height: 20px;
+    height: 20px;
 }
 
 .product {
     display: grid;
+}
+
+.product-name {
+    height: 10px;
 }
 
 .product-container, .image-container {
@@ -86,7 +90,9 @@ ul li img:not(.footerImage):hover,ul li img:not(.footerImage) {
 }
 
 .linkRel {
-    font-weight: bold;
+    /* font-weight: bold; */
+    color: blue;
+    text-decoration: underline;
     transition: scale 500ms;
 }
 
