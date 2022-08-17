@@ -136,7 +136,7 @@ const products = [
   },
   {
     id: 4,
-    name: "Gentle baby formula",
+    name: "Gentle baby formula  -   super gentle formula", 
     brand: "Gerber Good Start",
     retailer: "Walmart",
     price: 34.98,
@@ -981,7 +981,7 @@ const products = [
   },
   {
     id: null,
-    name: "o.b. Original Multipack Tampons - Applicator-Free - Unscented - Regular/Super/Super Plus - 40ct",
+    name: "o.b. Original Multipack Tampons - Applicator-Free - 40ct",
     brand: "o.b.",
     retailer: "Target",
     price: 6.99,
@@ -994,7 +994,7 @@ const products = [
   },
   {
     id: null,
-    name: "Playtex Sport Tampons - Plastic - Unscented - Regular - 36ct",
+    name: "Playtex Sport Tampons - Plastic - Regular - 36ct",
     brand: "Playtex",
     retailer: "Target",
     price: 7.49,
@@ -1007,7 +1007,7 @@ const products = [
   },
   {
     id: null,
-    name: "Tampax Pearl Tampons Regular/Super Absorbency with LeakGuard Braid -Duo Pack - Unscented - 34ct",
+    name: "Tampax Pearl Tampons Regular/Super - 34ct",
     brand: "Tampax",
     retailer: "Target",
     price: 7.99,
@@ -1020,7 +1020,7 @@ const products = [
   },
   {
     id: null,
-    name: "L . Organic Cotton Full Size Multipack Refill Tampons - Regular/Super - 42ct",
+    name: "L . Organic Cotton Full Size Multipack Refill Tampons - 42ct",
     brand: "L .",
     retailer: "Target",
     price: 10.69,
@@ -1046,7 +1046,7 @@ const products = [
   },
   {
     id: null,
-    name: "Tampax Radiant Tampons Regular Absorbency - Unscented - 28ct",
+    name: "Tampax Radiant Tampons Regular Absorbency - 28ct",
     brand: "Tampax",
     retailer: "Target",
     price: 7.99,
@@ -1059,7 +1059,7 @@ const products = [
   },
   {
     id: null,
-    name: "Tampax Radiant Duopack Regular/Super Absorbency Unscented Plastic Tampons - 28ct",
+    name: "Tampax Radiant Duopack Regular/Super Absorbency - 28ct",
     brand: "Tampax",
     retailer: "Target",
     price: 7.99,
@@ -1085,7 +1085,7 @@ const products = [
   },
   {
     id: null,
-    name: "Tampax Pearl Tampons Light Absorbency with LeakGuard Braid -  Unscented - 36ct",
+    name: "Tampax Pearl Tampons Light Absorbency with LeakGuard - 36ct",
     brand: "Tampax",
     retailer: "Target",
     price: 7.99,
@@ -1098,7 +1098,7 @@ const products = [
   },
   {
     id: null,
-    name: "Tampax Pearl Tampons Super Absorbency with LeakGuard Braid - Unscented - 36ct",
+    name: "Tampax Pearl Tampons Super Absorbency with LeakGuard - 36ct",
     brand: "Tampax",
     retailer: "Target",
     price: 7.99,
@@ -1111,7 +1111,7 @@ const products = [
   },
   {
     id: null,
-    name: "Tampax Pearl Tampons Trio Pack with Plastic Applicator and LeakGuard Braid - Light/Regular/Super Absorbency - Unscented - 47ct",
+    name: "Tampax Pearl Tampons Trio Pack with LeakGuard Braid - 47ct",
     brand: "Tampax",
     retailer: "Target",
     price: 10.49,
@@ -1124,7 +1124,7 @@ const products = [
   },
   {
     id: null,
-    name: "Playtex Sport Multipack Tampons - Plastic - Unscented - Regular/Super - 48ct",
+    name: "Playtex Sport Multipack Tampons - Plastic - 48ct",
     brand: "Playtex",
     retailer: "Target",
     price: 9.79,
@@ -1150,7 +1150,7 @@ const products = [
   },
   {
     id: null,
-    name: "Tampons - Regular Absorbency - Plastic - 36ct - up &#38; up&#8482;",
+    name: "Tampons - Regular Absorbency - Plastic - 36ct",
     brand: "up & up",
     retailer: "Target",
     price: 4.29,
@@ -1163,7 +1163,7 @@ const products = [
   },
   {
     id: null,
-    name: "Multipack Tampons - Plastic - 50ct - up &#38; up&#8482;",
+    name: "Multipack Tampons - Plastic - 50ct",
     brand: "up & up",
     retailer: "Target",
     price: 5.89,
