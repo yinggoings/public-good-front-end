@@ -1,3 +1,7 @@
+.capitalize {
+    text-transform: capitalize;
+}
+
 ul,li {
     list-style:none;
     padding: 5px 5px 5px 5px;
@@ -36,6 +40,10 @@ img:not(.footerImage) {
 
 #product-name {
     font-size: calc(4px + 2vmin);
+}
+
+.product-name-container {
+   height: 20px;
 }
 
 .product {

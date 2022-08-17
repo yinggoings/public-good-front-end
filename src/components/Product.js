@@ -8,10 +8,11 @@ const Product = ({
   available,
   retailer,
   id,
-  image,
+  imageURL,
   brand,
   name,
   buyURL,
+  category,
 }) => {
   const determineAvailability = () => {
     let availabilityInfo;
@@ -39,10 +40,12 @@ const Product = ({
               {brand}
             </p>
             <p className="product-image image-container">
-              <ProductImage image={image} />
+              <ProductImage image={imageURL} />
             </p>
 
-            <p id="product-name product-name-container">{name}</p>
+            <p id="product-name product-name-container" className="capitalize">
+              {name}
+            </p>
             <p id="product-price product-price-container">{`$${price}`}</p>
             <p id="product-quantity product-quantity-container">
               {determineAvailability()}
@@ -59,6 +62,7 @@ const Product = ({
                 : `${props.quantity} units available at ${props.retailer}`} */}
               {/* {`${props.quantity} units available at ${props.retailer}`} */}
             </p>
+            <p>{category}</p>
             {/* <p id='retailer'>{`Available at ${props.retailer}`}</p> */}
           </section>
         </li>
@@ -68,12 +72,12 @@ const Product = ({
 };
 
 Product.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   name: PropTypes.string.isRequired,
   brand: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   available: PropTypes.bool.isRequired,
-  image: PropTypes.string.isRequired,
+  imageURL: PropTypes.string.isRequired,
   retailer: PropTypes.string.isRequired,
   buyURL: PropTypes.string,
 };

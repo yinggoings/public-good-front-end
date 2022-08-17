@@ -1,20 +1,30 @@
 import Product from "./Product";
 import PropTypes from "prop-types";
+import "./ProductList.css";
 
 const ProductList = (props) => {
   const getProductList = (props) => {
-    return props.products.map((product) => {
+    console.log(props.products.length);
+    return props.products.map((product, i) => {
+      console.log(i);
+      let category;
+      if (i <= 68) {
+        category = "Baby Formula";
+      } else {
+        category = "Tampons";
+      }
       return (
         <Product
-          key={product.id}
-          id={product.id}
+          key={product.i}
+          id={product.i}
           name={product.name}
           brand={product.brand}
           price={product.price}
           available={product.available}
-          image={product.image}
+          imageURL={product.imageURL}
           retailer={product.retailer}
           buyURL={product.buyURL}
+          category={category}
         />
       );
     });
@@ -48,7 +58,7 @@ ProductList.propTypes = {
       brand: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,
       available: PropTypes.bool.isRequired,
-      image: PropTypes.string.isRequired,
+      imageURL: PropTypes.string.isRequired,
       retailer: PropTypes.string.isRequired,
       buyURL: PropTypes.string,
     })

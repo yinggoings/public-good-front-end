@@ -3,6 +3,7 @@ a, a:hover, a:visited, a:active {
     text-decoration: none;
 }
 
+
 .aboutUs {
     padding: 0px;
     margin-left: -5px;
@@ -41,7 +42,7 @@ a, a:hover, a:visited, a:active {
 }
 
 .landing-page-text {
-    font-size: 17px;
+    font-size: 30px;
     margin-top: 50px;
     width: 60px;
 }
