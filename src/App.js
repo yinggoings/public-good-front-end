@@ -221,6 +221,8 @@ const App = () => {
       `{${userLocation.coordinates.lat}, ${userLocation.coordinates.long}}`
     );
     setLoadedLocation(true);
+    // setDisplayedProducts([]);
+    // filterByCategory();
   };
 
   const onFormSubmit = (event) => {
@@ -234,6 +236,7 @@ const App = () => {
       onFormSubmitZipCode(event);
       changeDisplay();
     }
+    filterByCategory();
   };
 
   const onFormSubmitZipCode = (event) => {
@@ -278,6 +281,16 @@ const App = () => {
       return updateZipCode;
     }
   };
+
+  const disabledSubmit = () => {
+    if (!searchQuery) {
+      return true;
+    } else if (!zipcode || !locationInput) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return (
     <div className="App">
       <Navbar />
@@ -296,8 +309,10 @@ const App = () => {
             </div>
             <button
               disabled={
-                !searchQuery && (!zipcode || !locationInput)
+                disabledSubmit
+                // (!searchQuery && (!zipcode || !locationInput)) ||
                 // (searchQuery && (!zipcode || !locationInput))
+                // // (!searchQuery && (zipcode || locationInput))
               }
               className="arrow"
               type="submit"
