@@ -4,30 +4,31 @@ import "./ProductList.css";
 
 const ProductList = (props) => {
   const getProductList = (props) => {
-    console.log(props.products.length);
-    return props.products.map((product, i) => {
-      console.log(i);
-      let category;
-      if (i <= 68) {
-        category = "Baby Formula";
-      } else {
-        category = "Tampons";
-      }
-      return (
-        <Product
-          key={product.i}
-          id={product.i}
-          name={product.name}
-          brand={product.brand}
-          price={product.price}
-          available={product.available}
-          imageURL={product.imageURL}
-          retailer={product.retailer}
-          buyURL={product.buyURL}
-          category={category}
-        />
-      );
-    });
+    return props.products;
+    // console.log(props.products.length);
+    // return props.products.map((product, i) => {
+    //   // console.log(i);
+    //   // let category;
+    //   // if (i <= 68) {
+    //   //   category = "baby formula";
+    //   // } else {
+    //   //   category = "tampons";
+    //   // }
+    //   return (
+    //     <Product
+    //       key={product.i}
+    //       id={product.i}
+    //       name={product.name}
+    //       brand={product.brand}
+    //       price={product.price}
+    //       available={product.available}
+    //       imageURL={product.imageURL}
+    //       retailer={product.retailer}
+    //       buyURL={product.buyURL}
+    //       category={product.category}
+    //     />
+    //   );
+    // });
   };
 
   // const ProductSearch = ({products}) => {
@@ -61,6 +62,7 @@ ProductList.propTypes = {
       imageURL: PropTypes.string.isRequired,
       retailer: PropTypes.string.isRequired,
       buyURL: PropTypes.string,
+      category: PropTypes.string,
     })
   ),
 };

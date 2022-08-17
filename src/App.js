@@ -9,16 +9,42 @@ import Navbar from "./components/Navbar";
 import axios from "axios";
 import LandingPage from "./components/LandingPage";
 import products from "./data/products";
-import tampons from "./data/tampons";
+import Product from "./components/Product";
 import { TARGET_STORES_MAP, WALMART_STORES_MAP } from "./data/locations";
 
 const App = () => {
+  const updatedProducts = products.map((product, i) => {
+    let category;
+    if (i < 68) {
+      category = "baby formula";
+    } else {
+      category = "tampons";
+    }
+
+    return (
+      <Product
+        key={product.i}
+        id={product.i}
+        name={product.name}
+        brand={product.brand}
+        price={product.price}
+        available={product.available}
+        imageURL={product.imageURL}
+        retailer={product.retailer}
+        buyURL={product.buyURL}
+        category={category}
+      />
+    );
+  });
+
+  console.log(updatedProducts);
+
   const BACKENDURL = "https://public-good-app.herokuapp.com/api/v1/product";
   // const API_KEY = process.env.REACT_APP_ZIP_CODE_API_KEY;
 
   const [searchQuery, setSearchQuery] = useState("");
   // using hardcoded data state
-  const [productsDisplayed, setDisplayedProducts] = useState(products);
+  const [productsDisplayed, setDisplayedProducts] = useState(updatedProducts);
   const [address, setAddress] = useState("");
   // const [radius, setRadius] = useState(1);
   const [zipcode, setZipCode] = useState(null);
@@ -127,17 +153,38 @@ const App = () => {
 
   // filters products - hardcoded data
 
-  const filter = (s) => {
-    const keyword = s.target.value;
-    // if (keyword !== "") {
-    //   const result = products.filter((product) => {
-    //     return product.name.toLowerCase().startsWith(keyword.toLowerCase());
-    //   });
-    //   setDisplayedProducts(keyword);
-    // } else {
-    //   setDisplayedProducts(products);
-    // }
-    setSearchQuery(keyword);
+  // const filter = (s) => {
+  //   const keyword = s.target.value;
+  //   if (keyword !== "") {
+  //     const result = products.filter((product) => {
+  //       return product.name.toLowerCase().startsWith(keyword.toLowerCase());
+  //     });
+  //     setDisplayedProducts(keyword);
+  //   } else {
+  //     setDisplayedProducts(products);
+  //   }
+  //   setSearchQuery(keyword);
+  // };
+
+  const updateSearchQuery = (e) => {
+    const updatedSearchQuery = e.target.value;
+    setSearchQuery(updatedSearchQuery);
+  };
+
+  const filterByCategory = () => {
+    if (searchQuery.toLowerCase() === "baby formula") {
+      const result = updatedProducts.filter((product) => {
+        // console.log("HELLO", product.props.category.toLowerCase());
+        // console.log("HELLO", product.category.toLowerCase());
+        return product.props.category.toLowerCase() === "baby formula";
+      });
+      setDisplayedProducts(result);
+    } else if (searchQuery.toLowerCase() === "tampons") {
+      const result = updatedProducts.filter((product) => {
+        return product.props.category.toLowerCase() === "tampons";
+      });
+      setDisplayedProducts(result);
+    }
   };
 
   const updateAddress = (e) => {
@@ -231,7 +278,6 @@ const App = () => {
       return updateZipCode;
     }
   };
-  console.log("IT IS A", typeof zipcode);
   return (
     <div className="App">
       <Navbar />
@@ -242,7 +288,7 @@ const App = () => {
               <input
                 type="search"
                 value={searchQuery}
-                onChange={filter}
+                onChange={updateSearchQuery}
                 className="search-input"
                 placeholder="Search Products"
                 required={true}
@@ -255,6 +301,7 @@ const App = () => {
               }
               className="arrow"
               type="submit"
+              onClick={filterByCategory}
             ></button>
             <div className="location-container">
               <input

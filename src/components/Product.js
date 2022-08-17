@@ -62,7 +62,6 @@ const Product = ({
                 : `${props.quantity} units available at ${props.retailer}`} */}
               {/* {`${props.quantity} units available at ${props.retailer}`} */}
             </p>
-            <p>{category}</p>
             {/* <p id='retailer'>{`Available at ${props.retailer}`}</p> */}
           </section>
         </li>
@@ -80,6 +79,7 @@ Product.propTypes = {
   imageURL: PropTypes.string.isRequired,
   retailer: PropTypes.string.isRequired,
   buyURL: PropTypes.string,
+  category: PropTypes.string,
 };
 
 export default Product;
