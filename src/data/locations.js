@@ -49,20 +49,20 @@ const TARGET_STORES_MAP = {
 }
 
 const WALMART_STORES_MAP = {
-  98104: {
-    store_id: "3098",
+  "98104": {
+    "store_id": "3098",
   },
-  43017: {
-    store_id: "2471",
+  "43017": {
+    "store_id": "2471",
   },
-  60645: {
-    store_id: "4177",
+  "60645": {
+    "store_id": "4177",
   },
-  27514: {
-    store_id: "2137",
+  "27514": {
+    "store_id": "2137",
   },
-  10027: {
-    store_id: "3795",
+  "10027": {
+    "store_id": "3795",
   },
 };
 

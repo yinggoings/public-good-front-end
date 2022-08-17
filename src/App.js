@@ -84,6 +84,44 @@ const App = () => {
   //     setDisplayedProducts(products);
   //   }
 
+  // if (keyword !== "") {
+  //   let products = [];
+  //   // const axios = require('axios').default;
+  //   const stringZipcode = String(zipcode);
+  //   console.log(zipcode);
+  //   console.log(stringZipcode);
+  //   // const params = { searchStr: keyword, store_id: "4177" };
+  //   // connect to backend and call getmapping to return list of product objects
+  //   const params = {
+  //     searchStr: keyword,
+  //     zipCode: stringZipcode,
+  //     target: TARGET_STORES_MAP[stringZipcode],
+  //     walmart: WALMART_STORES_MAP[stringZipcode],
+  //   };
+
+  //   console.log(params);
+
+  //   axios
+  //     .get(BACKENDURL, { params: params })
+  //     .then(function (response) {
+  //       let productsData = response.data;
+  //       for (let productData of productsData) {
+  //         productData.buyURL = "https://www.walmart.com" + productData.buyURL;
+  //         let imageURL = productData["imageURL"];
+  //         delete productData.imageURL;
+  //         productData.image = imageURL;
+  //         console.log(productData);
+  //         products.push(productData);
+  //         console.log("!");
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  //   console.log("PRODUCTS: " + products);
+  //   setDisplayedProducts(products);
+  // }
+
   //   setSearchQuery(keyword);
   // };
 

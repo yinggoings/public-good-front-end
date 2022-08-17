@@ -1,7 +1,7 @@
 import "./LandingPage.css";
 import { MdOutlineTravelExplore } from "react-icons/md";
 import { IoMdPin } from "react-icons/io";
-import { SiYourtraveldottv } from "react-icons/si";
+// import { SiYourtraveldottv } from "react-icons/si";
 import { HiShoppingCart } from "react-icons/hi";
 import { BsSuitHeartFill } from "react-icons/bs";
 
@@ -15,8 +15,13 @@ const LandingPage = () => {
           </div>
           {/* <div class="learn-about-us">
             <button type="button" class="btn-outline-dark btn-about-us">
+<<<<<<< HEAD
               <a href="/about">about us</a>
             </button>
+=======
+              <a href="/about">about us</a> */}
+          {/* </button>
+>>>>>>> 37238389b49e243074da93124b6d029cf1df9a71
           </div> */}
         </div>
       </div>
